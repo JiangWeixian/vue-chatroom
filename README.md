@@ -26,7 +26,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 Until 2018, complete a website.
 
-And, 
+And,
 
 * SEVER is based on express
 * Fonter is based on Vue
@@ -34,23 +34,25 @@ And,
 
 The jobs of vue showed:
 
->Vue
 
->>Vuex: Vue状态处理插件，包含action等等功能。用于页面中一些简单函数处理，包括生成页面；或者获取保存好的数据，而数据来源于服务器。即Vue发起AJAX请求，获得数据，处理数据。至于数据是否保存看情况;
-
->>Vue-router: 由于Vue属于单页面应用，该插件用于处理页面中不同路由跳转。
-
->>Vue-material: 属于网站UI库，Ｍaterial风格。具体使用参考官网。
+```
+├── vue
+├── vue-hot-reload-api
+├── vue-loader
+├── vue-material - UI库/Ｍaterial-design
+├── vue-router - 由于Vue属于单页面应用，该插件用于处理页面中不同路由跳转
+├── vue-style-loader
+├── vue-template-compiler
+├── vue-template-es2015-compiler
+├── vuex - Vue状态处理插件,数据来源于服务器.即Vue发起AJAX请求
+```
 
 The jobs of express showed:
 
->express
+* More datasets
+* More pages
+* More funcs backend
 
->>数据库: 处理和数据一切有关的东西
-
->>更多的页面处理
-
->>更多的功能，例如爬虫
 
 ## Pages
 ***
