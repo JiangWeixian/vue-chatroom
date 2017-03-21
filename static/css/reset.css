@@ -1,0 +1,52 @@
+html{
+    font-size: 62.5%;
+    width: 100%;
+}
+body{
+    line-height: 1.5;
+}
+*{
+    margin: 0;
+    padding: 0;
+    color: white;;
+}
+a{
+    text-decoration: none;
+}
+.pull-left{
+    float: left!important;
+}
+.pull-left{
+    float: right!important;
+}
+.clearfix:after,
+.clearfix:before{
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    clear: both!important;
+}
+.hide{
+    display: none;
+}
+ul{
+    list-style: none;
+}
+/*======
+    修改placeholder的颜色
+    ======*/
+:-ms-input-placeholder{
+    color: #000;
+}
+::-moz-placeholder{
+    color: #000;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder{
+    color: #000;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
+    color: #000;
+}
