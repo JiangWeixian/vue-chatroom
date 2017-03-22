@@ -1,24 +1,45 @@
 <template>
   <div id="LoginPanel" class="login-panel">
-    <span class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">hello</span>
+    <p class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">hello, {{ name }}</p>
     <div id="Logininfo" class="login-info">
-      <input type="text">
-      <input type="text">
+      <input type="text" v-model="name">
+      <input type="text" v-model="password">
     </div>
     <div id="LoginSubmit" class="login-submit">
       <a href="#" class="signup">No Account!Sign Up</a>
-      <button type="submit">Login</button>
+      <button type="submit" v-on:click="loginIn()">Login</button>
     </div>
   </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
   export default {
     name: 'LoginPanel',
     data() {
       return {
-        activeNameClass: false
+        activeNameClass: false,
+        name: '',
+        password: ''
       }
+    },
+    methods: {
+      ...mapActions([
+        'loginIn'
+      ])
     }
   }
 </script>
+
+<style scoped>
+  .login-panel {
+    width: 30%;
+    padding: 20em 2em;
+    margin: 0 auto;
+    background-color: #ffffff;
+  }
+  .login-panel .login-submit {
+    color: black;
+  }
+</style>

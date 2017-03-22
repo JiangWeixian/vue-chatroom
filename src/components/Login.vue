@@ -22,5 +22,4 @@
     width: 100%;
     background:url("../assets/login-bg.jpg") no-repeat fixed center;
   }
-
 </style>

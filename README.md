@@ -75,7 +75,7 @@ Should contain funcs of datasets.
 
 * [x] loginin-router
 * [ ] login-vuex
-  * [ ] hello world
+  * [x] hello world
 
 
 
