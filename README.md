@@ -22,7 +22,6 @@ npm run build --report
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Our Goal
-***
 
 Until 2018, complete a website.
 
@@ -31,6 +30,8 @@ And,
 * SEVER is based on express
 * Fonter is based on Vue
 * UI is based on vue-material
+
+### Vue
 
 The jobs of vue showed:
 
@@ -47,6 +48,12 @@ The jobs of vue showed:
 ├── vuex - Vue状态处理插件,数据来源于服务器.即Vue发起AJAX请求
 ```
 
+And the workflow of vuex showed below:
+
+![workflow of vuex](https://raw.githubusercontent.com/vuejs/vuex/dev/docs/en/images/vuex.png)
+
+### Express
+
 The jobs of express showed:
 
 * More datasets
@@ -55,7 +62,6 @@ The jobs of express showed:
 
 
 ## Pages
-***
 
 First Commit
 
@@ -67,7 +73,9 @@ First Commit
 
 Should contain funcs of datasets.
 
-* [ ] loginin-router
+* [x] loginin-router
+* [ ] login-vuex
+  * [ ] hello world
 
 
 
