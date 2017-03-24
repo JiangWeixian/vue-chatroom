@@ -7,7 +7,7 @@ import * as actions from './actions'
 Vue.use(Vuex);
 
 const state = {
-  login: true
+  login: false
 };
 
 export default new Vuex.Store({

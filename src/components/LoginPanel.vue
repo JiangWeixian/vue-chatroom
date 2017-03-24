@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'LoginPanel',
@@ -25,9 +25,16 @@
       }
     },
     methods: {
-      ...mapActions([
-        'loginIn'
-      ])
+      loginIn () {
+        const name = this.name.trim();
+        const password = this.password.trim();
+        if (name && password) {
+          this.$store.dispatch('loginIn', {
+            name,
+            password
+          })
+        }
+      }
     }
   }
 </script>

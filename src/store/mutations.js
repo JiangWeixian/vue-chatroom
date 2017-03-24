@@ -3,7 +3,7 @@ import * as types from './mutation-types'
 
 
 export const LOGIN_IN = state => {
-  if (state.login) {
+  if (!state.login) {
     window.alert("hello world")
   }
 };
