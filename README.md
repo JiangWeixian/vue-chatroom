@@ -3,7 +3,6 @@
 > A Vue.js project with express(**in processing**)
 
 ## Build Setup
-***
 
 ``` bash
 # install dependencies
@@ -77,7 +76,13 @@ Should contain funcs of datasets.
 * [x] loginin-router
 * [ ] login-vuex
   * [x] hello world
-  * [ ] simple server service
+  * [x] post data to server(http://localhost:3000)
+* [ ] mongodb datasets
+  * [x] [create free clound datasets](www.mlab.com)
+  * [ ] how the mongodb work
+* [ ] service
+  * [x] cors
+  * [ ] create sheet in datasets/link to datasets
 
 
 
