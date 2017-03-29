@@ -40,7 +40,7 @@ The jobs of vue showed:
 ├── vue-hot-reload-api
 ├── vue-loader
 ├── vue-material - UI库/Ｍaterial-design
-├── [vue-resource](https://github.com/pagekit/vue-resource) - vue向服务器发起请求
+├── vue-resource - vue向服务器发起请求
 ├── vue-router - 由于Vue属于单页面应用，该插件用于处理页面中不同路由跳转
 ├── vue-style-loader
 ├── vue-template-compiler
@@ -59,6 +59,11 @@ The jobs of express showed:
 * More datasets
 * More pages
 * More funcs backend
+
+### Mongoose
+
+Use [Mongoose](http://www.nodeclass.com/api/mongoose.html) to manager Mongodb, and the datasets
+stored in [Mlab Driver](www.mlab.com)
 
 
 ## Pages

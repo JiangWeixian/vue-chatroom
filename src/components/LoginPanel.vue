@@ -1,8 +1,9 @@
 <template>
   <div id="LoginPanel" class="login-panel">
-    <p class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">hello, {{ name }}</p>
+    <p class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">hello, {{ nickname }}</p>
     <div id="Logininfo" class="login-info">
-      <input type="text" v-model="name">
+      <input type="text" v-model="nickname">
+      <input type="text" v-model="account">
       <input type="text" v-model="password">
     </div>
     <div id="LoginSubmit" class="login-submit">
@@ -20,17 +21,21 @@
     data() {
       return {
         activeNameClass: false,
-        name: '',
+        nickname: '',
+        account: '',
         password: ''
       }
     },
     methods: {
       loginIn () {
-        const name = this.name.trim();
-        const password = this.password.trim();
-        if (name && password) {
+        const nickname = this.nickname.trim(),
+              account = this.account.trim(),
+              password = this.password.trim()
+
+        if (nickname && account && password) {
           this.$store.dispatch('loginIn', {
-            name,
+            nickname,
+            account,
             password
           })
         }
