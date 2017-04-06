@@ -10,7 +10,9 @@
     components: {LoginPanel},
     name: 'Login',
     data() {
-
+      return {
+        back: ''
+      }
     }
   }
 </script>

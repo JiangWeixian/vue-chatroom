@@ -47,7 +47,7 @@
               localStorage.setItem('token', res.body.token);
             }, function (res) {
               console.log(res.status);
-              this.$router.push('/reg');
+              this.$router.push({path: '/reg'});
             });
           this.$store.dispatch('loginIn', {
             nickname,

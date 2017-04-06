@@ -108,5 +108,9 @@ The update of vuedetect-project
 * in ./src/store/action.js - **move** fuction LoginIn to loginPanel.vue: **add** stored token in localstorage/vue.router.go(not test)
 * in ./server/router/login.js - when accout&password are found in datasets: response token
 
+### 2017-4-6
+
+* in ./src/compoents/LoginPanel.vue - **fixed**: using $router.push, back-button of browser working now!
+
 
 

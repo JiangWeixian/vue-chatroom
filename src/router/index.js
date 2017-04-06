@@ -37,9 +37,6 @@ router.beforeEach((to, from, next) => {
       next('/reg');
     }
   }
-  if(to.path == '/login' || to.path == 'reg') {
-    next();
-  }
   else {
     Vue.http.headers.common['Authorization'] = token;
     next();

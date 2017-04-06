@@ -4,8 +4,8 @@
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank">reg</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">ref</a></li>
+      <li><a href="https://vuejs.org" target="_blank">regs</a></li>
+      <li><a href="https://forum.vuejs.org" target="_blank">reg</a></li>
       <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
       <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
       <br>
