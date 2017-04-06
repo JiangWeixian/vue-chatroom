@@ -15,7 +15,12 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-
+  /**
+   *The loginPanel
+   * ------------------------
+   * @ method-loginIn(still in building): post data to server, when status=200(ok), store token in localstorage; when status=301(not ok), go to Reg.vue
+   * ------------------------
+   */
   export default {
     name: 'LoginPanel',
     data() {
@@ -30,9 +35,20 @@
       loginIn () {
         const nickname = this.nickname.trim(),
               account = this.account.trim(),
-              password = this.password.trim()
+              password = this.password.trim();
 
         if (nickname && account && password) {
+          this.$http.post('http://localhost:3000/login',{
+            nickname: nickname,
+            account: account,
+            password: password })
+            .then(function (res) {
+              console.log(res);
+              localStorage.setItem('token', res.body.token);
+            }, function (res) {
+              console.log(res.status);
+              this.$router.push('/reg');
+            });
           this.$store.dispatch('loginIn', {
             nickname,
             account,

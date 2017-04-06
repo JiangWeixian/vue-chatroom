@@ -79,19 +79,34 @@ First Commit
 Should contain funcs of datasets.
 
 * [x] loginin-router
-* [ ] login-vuex
+  * [ ] add history mode in router
+* [x] login-vuex
   * [x] hello world
   * [x] post data to server(http://localhost:3000)
 * [ ] mongodb datasets
   * [x] [create free clound datasets](www.mlab.com)
-  * [ ] how the mongodb work
-* [ ] service
+  * [x] how the mongodb work
+  * [ ] modify mongodb user-schema
+* [x] service
   * [x] cors
-  * [ ] create sheet in datasets/link to datasets
+  * [x] create sheet in datasets/link to datasets
+  * [x] add jwt-simple to server-login-router
+  * [ ] move secret into config
 
 
 
 ### HOME-PAGE
 
 Should contain brief of this website.
+
+## Update
+The update of vuedetect-project
+
+### 2017-4-5
+
+* in ./src/router/index.js - **add** beforeach
+* in ./src/store/action.js - **move** fuction LoginIn to loginPanel.vue: **add** stored token in localstorage/vue.router.go(not test)
+* in ./server/router/login.js - when accout&password are found in datasets: response token
+
+
 

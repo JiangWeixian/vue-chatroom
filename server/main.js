@@ -1,9 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var session = require('express-session');
 var mongoose = require('mongoose');
-var MongoStore = require('connect-mongo')(session);
+var jwt = require('jwt-simple');
 var passport = require('passport');
 var path = require('path');
 
@@ -46,15 +45,6 @@ app = express();
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(session({
-  secret: 'vuedetect',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge: 60*1000 },
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
-}));
-//app.use(passport.initialize());
-//app.use(passport.session());
 
 
 /**
@@ -64,8 +54,7 @@ app.use(session({
  */
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
   next();
 });
