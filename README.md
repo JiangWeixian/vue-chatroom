@@ -79,19 +79,20 @@ First Commit
 Should contain funcs of datasets.
 
 * [x] loginin-router
-  * [ ] add history mode in router
+  * [x] add history mode in router
 * [x] login-vuex
   * [x] hello world
   * [x] post data to server(http://localhost:3000)
-* [ ] mongodb datasets
+* [x] mongodb datasets
   * [x] [create free clound datasets](www.mlab.com)
   * [x] how the mongodb work
-  * [ ] modify mongodb user-schema
 * [x] service
   * [x] cors
   * [x] create sheet in datasets/link to datasets
   * [x] add jwt-simple to server-login-router
   * [ ] move secret into config
+* [x] login.vue
+  * [x] modify postdata
 
 
 
@@ -112,5 +113,9 @@ The update of vuedetect-project
 
 * in ./src/compoents/LoginPanel.vue - **fixed**: using $router.push, back-button of browser working now!
 
+### 2017-4-7
+
+* in ./src/compoents/LoginPanel.vue - **change**: change postdata {nickname, account, password} to {nickname, password}
+* in ./src/store/actions.js(func loginIn) - **completed** func loginIn(in actions.js), then commit func loginIn(in mutations.js)
 
 
