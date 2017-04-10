@@ -136,7 +136,7 @@ The update of vuedetect-project:
 * in ./src/components/LoginPanel.vue - **change**: change postdata {nickname, account, password} to {nickname, password}
 * in ./src/store/actions.js(func loginIn) - **completed** func loginIn(in actions.js), then commit func loginIn(in mutations.js)
 
-# 2017-4-9
+### 2017-4-9
 
 * in ./src/components/Reg.vue - **created** new .vue files for signup
 * in ./src/components/RegPanel.vue - **created** new .vue files for signup, and **created** signup funcs
