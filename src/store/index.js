@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 const state = {
   login: false,
-  nickname: null
+  nickname: 'Saber'
 };
 
 export default new Vuex.Store({

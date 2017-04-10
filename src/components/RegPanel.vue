@@ -1,6 +1,6 @@
 <template>
   <div id="LoginPanel" class="login-panel">
-    <p class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">hello, {{ nickname }}</p>
+    <p class="login-title">Welcome come here, {{ nickname }}</p>
     <div id="Logininfo" class="login-info">
       <input type="text" v-model="nickname">
       <input type="text" v-model="account">
@@ -8,34 +8,47 @@
     </div>
     <div id="LoginSubmit" class="login-submit">
       <a href="#" class="signup">No Account!Sign Up</a>
-      <button type="submit" v-on:click="RegOn()">Login</button>
+      <button type="submit" v-on:click="SignUp()">Login</button>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex'
   /**
    *The RegPanel
    * ------------------------
-   * @ method-loginIn(still in building): post data to server, when status=200(ok), store token in localstorage; when status=301(not ok), go to Reg.vue
+   * @ method-SignUp(still in building): post data to server, when status=200(ok), store token in localstorage; when status=301(not ok), go to Reg.vue
    * ------------------------
    */
   export default {
-    name: 'LoginPanel',
+    name: 'RegPanel',
     data() {
       return {
-        activeNameClass: false,
         nickname: '',
         account: '',
         password: ''
       }
     },
     methods: {
-      RegOn() {
+      SignUp() {
         const nickname = this.nickname.trim(),
           account = this.nickname.trim(),
           password = this.nickname.trim();
+        if(nickname && account && password) {
+          this.$http.post('http://localhost:3000/reg', {
+            nickname,
+            account,
+            password
+          }).then((res) => {
+            if(res.status == 200) {
+              console.log('signup successly!already send email, please checkout!');
+              localStorage.setItem('token', res.body.token);
+              this.$store.dispatch('loginIn', { nickename });
+            }
+          }, (res) => {
+            this.$router.push({path: '/push'})
+          })
+        }
       }
     }
   }

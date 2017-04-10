@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login'
 import Reg from '@/components/Reg'
+import push from '@/components/push'
 
 Vue.use(Router);
 
@@ -18,7 +19,8 @@ Vue.use(Router);
 const routes = [
   {path:'/', component:Hello, name:'hello'},
   {path:'/login', component:Login, name:'login'},
-  {path: '/reg', component:Reg, name:'reg'}
+  {path: '/reg', component:Reg, name:'reg'},
+  {path: '/push', component:push, name:'push'}
 ];
 
 const router = new Router({
@@ -31,10 +33,10 @@ router.beforeEach((to, from, next) => {
   if(to.path == '/') {
     if(token != 'null' && token != null) {
       console.log("get token");
-      next('/login');
+      next('/push');
     }
     else {
-      next('/reg');
+      next('/login');
     }
   }
   else {

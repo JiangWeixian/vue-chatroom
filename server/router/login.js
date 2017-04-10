@@ -11,7 +11,7 @@ var jwt = require('jwt-simple');
 var mongodb = require(DATASETS_PATH + 'mongodb');
 
 
-var secret = 'vue-express';
+var secret = require(CONFIG_PATH + 'jwt').secret;
 
 router.post('/login', function (req, res, next) {
   var condition = req.body;

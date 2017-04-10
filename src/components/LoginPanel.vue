@@ -30,7 +30,7 @@
       }
     },
     methods: {
-      loginIn () {
+      loginIn() {
         const nickname = this.nickname.trim(),
               password = this.password.trim();
 
@@ -38,11 +38,11 @@
           this.$http.post('http://localhost:3000/login',{
             nickname: nickname,
             password: password })
-            .then(function (res) {
+            .then((res) => {
               this.$store.dispatch('loginIn', { nickname });
               localStorage.setItem('token', res.body.token);
-            }, function (res) {
-              this.$router.push({path: '/reg'});
+            }, (res) =>{
+              this.$router.push({path: '/push'});
             });
         }
       }

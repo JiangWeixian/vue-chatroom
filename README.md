@@ -93,6 +93,18 @@ Should contain funcs of datasets.
   * [ ] move secret into config
 * [x] login.vue
   * [x] modify postdata
+  
+**func complete!**
+
+### REG-PAGE
+This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:check account...) to REG-PAGE/LOGIN-PAGE
+
+* [x] REG.vue
+  * [x] panel
+* [ ] REG-vuex
+  * [ ] action-check nickname/account/passwd in front-side
+* [ ] server
+  * [ ] check/insert info to datasets
 
 
 
@@ -101,7 +113,13 @@ Should contain funcs of datasets.
 Should contain brief of this website.
 
 ## Update
-The update of vuedetect-project
+The update of vuedetect-project:
+
+* **created**: create files from 0-1
+* **add**: add new to origin
+* **changed**: change somethings
+* **move**: move files/funcs from path1 to path2
+* **fixed**: fix bugs
 
 ### 2017-4-5
 
@@ -115,7 +133,10 @@ The update of vuedetect-project
 
 ### 2017-4-7
 
-* in ./src/compoents/LoginPanel.vue - **change**: change postdata {nickname, account, password} to {nickname, password}
+* in ./src/components/LoginPanel.vue - **change**: change postdata {nickname, account, password} to {nickname, password}
 * in ./src/store/actions.js(func loginIn) - **completed** func loginIn(in actions.js), then commit func loginIn(in mutations.js)
 
+# 2017-4-9
 
+* in ./src/components/Reg.vue - **created** new .vue files for signup
+* in ./src/components/RegPanel.vue - **created** new .vue files for signup, and **created** signup funcs
