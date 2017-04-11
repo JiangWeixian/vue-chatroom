@@ -11,18 +11,19 @@ var jwt = require('jwt-simple');
 var mongodb = require(DATASETS_PATH + 'mongodb');
 
 
-var secret = require(CONFIG_PATH + 'jwt').secret;
+var jwt_config = require(CONFIG_PATH + 'jwt').jwt_config;
+var secret = jwt_config.secret;
 
 router.post('/login', function (req, res, next) {
   var condition = req.body;
-  mongodb.User.find(condition, function (err, docs) {
+  mongodb.User.findOne(condition, function (err, docs) {
     if(err) {
       res.status(401);
     }
     else {
-      var user = docs[0];
+      var user = docs;
       if(user) {
-        console.log(docs);
+        console.log(user);
         var expires = Date.now() + 60 * 60 * 1000;
         var token = jwt.encode({
           iss: condition.nickname,
