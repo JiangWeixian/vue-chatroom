@@ -34,20 +34,20 @@
         const nickname = this.nickname.trim(),
           account = this.nickname.trim(),
           password = this.nickname.trim();
+
         if(nickname && account && password) {
           this.$http.post('http://localhost:3000/reg', {
-            nickname,
-            account,
-            password
-          }).then((res) => {
-            if(res.status == 200) {
-              console.log('signup successly!already send email, please checkout!');
-              localStorage.setItem('token', res.body.token);
-              this.$store.dispatch('loginIn', { nickename });
-            }
+            nickname: nickname,
+            account: account,
+            password: password})
+            .then((res) => {
+            window.alert('signup successly!already send email, please checkout!');
+            //localStorage.setItem('token', res.body.token);
+            this.$store.dispatch('loginIn', { nickname });
           }, (res) => {
-            this.$router.push({path: '/push'})
-          })
+            window.alert(res.status);
+            this.$router.push({path: '/push'});
+          });
         }
       }
     }

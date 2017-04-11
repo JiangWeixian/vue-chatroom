@@ -41,7 +41,7 @@
             .then((res) => {
               this.$store.dispatch('loginIn', { nickname });
               localStorage.setItem('token', res.body.token);
-            }, (res) =>{
+            }, (res) => {
               this.$router.push({path: '/push'});
             });
         }

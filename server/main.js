@@ -64,8 +64,9 @@ app.get('/',function (req, res) {
   }
   next();
 });
-app.use(loginRouter);
 app.use(regRouter);
+app.use(loginRouter);
+
 
 /**
  * Testing

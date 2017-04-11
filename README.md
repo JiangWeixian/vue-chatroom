@@ -90,7 +90,7 @@ Should contain funcs of datasets.
   * [x] cors
   * [x] create sheet in datasets/link to datasets
   * [x] add jwt-simple to server-login-router
-  * [ ] move secret into config
+  * [x] move secret into config
 * [x] login.vue
   * [x] modify postdata
   
@@ -104,7 +104,8 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
 * [ ] REG-vuex
   * [ ] action-check nickname/account/passwd in front-side
 * [ ] server
-  * [ ] check/insert info to datasets
+  * [x] check info in datasets
+  * [ ] check nickname or account independently, use Promise to insert info to datasets
 
 
 
@@ -140,3 +141,7 @@ The update of vuedetect-project:
 
 * in ./src/components/Reg.vue - **created** new .vue files for signup
 * in ./src/components/RegPanel.vue - **created** new .vue files for signup, and **created** signup funcs
+
+### 2017-4-10
+
+* in ./server/router/reg.js and ./server/router/login.js- **fixed** bugs when just **res.status(code)**, should **res.status(code).send(message)**;**change** mongo.User.find to mongo.User.findOne

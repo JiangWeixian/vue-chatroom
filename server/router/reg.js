@@ -7,33 +7,42 @@
 
 var router = require('express').Router();
 var jwt = require('jwt-simple');
+var Promoise = require('bluebird');
 var mongodb = require(DATASETS_PATH + 'mongodb');
 
-router.get('/reg', function (req, res) {
+
+var jwt_config = require(CONFIG_PATH + 'jwt').jwt_config;
+var secret = jwt_config.secret;
+
+router.post('/reg', function (req, res, next) {
   var condition = req.body;
-  mongodb.User.find(condition, function (err, docs) {
+  mongodb.User.findOne(condition, function (err, docs) {
     if(err) {
-      res.status(401);
+      res.status(401).send("mongo error");
     }
     else {
-      var user = docs[0];
+      var user = docs;
       if(user) {
-        res.status(401);
-      }
-      else {
+        console.log(user);
         var expires = Date.now() + 60 * 60 * 1000;
-        vat token = jwt.encode({
-          iss:condition.nickname,
+        var token = jwt.encode({
+          iss: condition.nickname,
           exp: expires,
           aud: 'vuedetect'
-        }, secrete);
+        }, secret);
+        res.status(301).send("already find this user");
+      }
+      else {
         res.status(200).json({
-          token:token,
+          token: token,
           expires: expires
-        })
+        });
       }
     }
-  })
+  });
 });
 
+function findAccountOrNickname(conditions) {
+
+}
 module.exports = router;
