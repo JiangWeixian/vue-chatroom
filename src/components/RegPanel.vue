@@ -20,6 +20,7 @@
    * @ method-SignUp(still in building): post data to server, when status=200(ok), store token in localstorage; when status=301(not ok), go to Reg.vue
    * ------------------------
    */
+  import * as cfg from '../config/cfg'
   export default {
     name: 'RegPanel',
     data() {
@@ -32,20 +33,20 @@
     methods: {
       SignUp() {
         const nickname = this.nickname.trim(),
-          account = this.nickname.trim(),
-          password = this.nickname.trim();
+          account = this.account.trim(),
+          password = this.password.trim();
 
         if(nickname && account && password) {
-          this.$http.post('http://localhost:3000/reg', {
+          this.$http.post(cfg.url + 'reg', {
             nickname: nickname,
             account: account,
             password: password})
             .then((res) => {
-            window.alert('signup successly!already send email, please checkout!');
-            //localStorage.setItem('token', res.body.token);
+            console.log('signup successly!already send email, please checkout!');
+            localStorage.setItem('token', res.body.token);
             this.$store.dispatch('loginIn', { nickname });
           }, (res) => {
-            window.alert(res.status);
+            console.log(res.status);
             this.$router.push({path: '/push'});
           });
         }

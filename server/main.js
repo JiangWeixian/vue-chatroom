@@ -34,12 +34,6 @@ var regRouter = require('./router/reg');
  * Global-Setting
  * @cookieParser process cookie
  * @bodyParser process req.body as json type
- * @session process/store status with session
- *     - secret: will be code-in-hash to cookie
- *     - resave(true): will save
- *     - saveUninitialized(true): each request will store session-cookie
- *     - cookie: in http&https;stored time
- * @passport login oauth
  */
 app = express();
 app.use(cookieParser());
@@ -51,17 +45,12 @@ app.use(bodyParser.urlencoded({extended: false}));
  * Router
  * @use1 set cors to process request
  * @use2 set loginRouter
+ * @use3 set regRouter
  */
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-  next();
-});
-app.get('/',function (req, res) {
-  if (req.cookie) {
-    console.log("ok");
-  }
   next();
 });
 app.use(regRouter);
