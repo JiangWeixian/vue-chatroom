@@ -13,13 +13,14 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex'
   /**
    *The loginPanel
    * ------------------------
    * @ method-loginIn(still in building): post data to server, when status=200(ok), store token in localstorage; when status=301(not ok), go to Reg.vue
    * ------------------------
    */
+  import { mapActions, mapGetters } from 'vuex'
+  import * as cfg from '../config/cfg'
   export default {
     name: 'LoginPanel',
     data() {
@@ -35,7 +36,7 @@
               password = this.password.trim();
 
         if (nickname && password) {
-          this.$http.post('http://localhost:3000/login',{
+          this.$http.post(cfg.url + 'login',{
             nickname: nickname,
             password: password })
             .then((res) => {

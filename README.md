@@ -102,10 +102,11 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
 * [x] REG.vue
   * [x] panel
 * [ ] REG-vuex
-  * [ ] action-check nickname/account/passwd in front-side
+  * [ ] action-check the format of nickname/account/passwd in front-side
 * [ ] server
   * [x] check info in datasets
-  * [ ] check nickname or account independently, use Promise to insert info to datasets
+  * [x] add newuser-info into datasets
+  * [ ] add new Router process check nickname and password
 
 
 
@@ -145,3 +146,12 @@ The update of vuedetect-project:
 ### 2017-4-10
 
 * in ./server/router/reg.js and ./server/router/login.js- **fixed** bugs when just **res.status(code)**, should **res.status(code).send(message)**;**change** mongo.User.find to mongo.User.findOne
+
+### 2017-4-11
+
+* in ./src/components/RegPanel.vue **fixed** small bugs
+* in ./server/router/reg.js - **add** codes, now we can add info to datasets
+* in ./server/util/jwt.js - **create** this file, and **move** jwt-funs in other files into this file
+* in ./src/config/cfg.js - **create** this file, add some config for vue, **change** little codes in ./src/components/RegPanel.vue and ./src/components/LoingPanel.vue
+* in ./src/store/action.js - **add** func check, post nickname/account to server and check if nickname/account already exit
+* in ./server/router/check.js - **create** this file, and **create** check-router

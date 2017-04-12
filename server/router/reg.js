@@ -2,17 +2,14 @@
  *The regRouter
  * ------------------------
  * The Router process reg post
+ * @ reg-post: client send nickname/accout/passwd, reg-post check those info in datasets; then add to datasets
  * ------------------------
  */
 
 var router = require('express').Router();
-var jwt = require('jwt-simple');
-var Promoise = require('bluebird');
+var jwt = require(UTIL_PATH + 'jwt');
 var mongodb = require(DATASETS_PATH + 'mongodb');
 
-
-var jwt_config = require(CONFIG_PATH + 'jwt').jwt_config;
-var secret = jwt_config.secret;
 
 router.post('/reg', function (req, res, next) {
   var condition = req.body;
@@ -24,25 +21,16 @@ router.post('/reg', function (req, res, next) {
       var user = docs;
       if(user) {
         console.log(user);
-        var expires = Date.now() + 60 * 60 * 1000;
-        var token = jwt.encode({
-          iss: condition.nickname,
-          exp: expires,
-          aud: 'vuedetect'
-        }, secret);
         res.status(301).send("already find this user");
       }
       else {
-        res.status(200).json({
-          token: token,
-          expires: expires
-        });
+        var encode_info = jwt.encode(condition.nickname);
+        var newUser = new mongodb.User(condition);
+        newUser.save();
+        res.status(200).json(encode_info);
       }
     }
   });
 });
 
-function findAccountOrNickname(conditions) {
-
-}
 module.exports = router;

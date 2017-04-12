@@ -1,13 +1,25 @@
 import * as types from './mutation-types'
+import * as cfg from '../config/cfg'
+import Vue from 'vue'
 
 /**
- * vuex actions
- * ------------
- * @func loginIn: commit mutations-loginIn to change state;
- *                { commit, state } defalut by vue, LoginPanel.vue pass { nickname } to actions-loginIn
+ * func loginIn: commit types.LOGIN_IN, change state
+ * @param commit: default by vue, commit funcs in mutations
+ * @param nickname: the nickname of user
+ * --------------------------------------------------------
+ * func check: post item to server, check item already exit or not
+ * @param item: the data should be checked by server
  */
 
-export const loginIn = ({ commit, state }, { nickname }) => {
+export const loginIn = ({ commit }, { nickname }) => {
   commit(types.LOGIN_IN, { nickname })
 };
 
+export const check = ({ commit }, { item }) => {
+  Vue.http.post(cfg.url + 'check', { item })
+    .then(function (res) {
+      console.log('already exit')
+    }, function (res) {
+      console.log('not exit')
+    })
+};
