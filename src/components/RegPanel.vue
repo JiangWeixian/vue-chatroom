@@ -2,9 +2,24 @@
   <div id="LoginPanel" class="login-panel">
     <p class="login-title">Welcome come here, {{ nickname }}</p>
     <div id="Logininfo" class="login-info">
-      <input type="text" v-model="nickname">
-      <input type="text" v-model="account">
-      <input type="text" v-model="password">
+      <p>
+        <input type="text" v-validate="'required|alpha_dash'" v-on:blur="Con()" v-model="nickname" name="name">
+        <i v-show="errors.has('name')" class="fa fa-warning"></i>
+        <span v-show="errors.has('name')" class="help is-danger"> {{ errors.first('name') }} </span>
+      </p>
+      <p>
+        <input type="text" v-validate="'required|email'" v-on:blur="Con()" v-model="account" name="account">
+        <i v-show="errors.has('account')" class="fa fa-warning"></i>
+        <span v-show="errors.has('account')" class="help is-danger"> {{ errors.first('account') }} </span>
+      </p>
+      <p>
+        <input type="text" v-validate="'required'" v-model="password" name="password">
+        <i v-show="errors.has('password')" class="fa fa-warning"></i>
+        <span v-show="errors.has('password')" class="help is-danger"> {{ errors.first('password') }} </span>
+        <input type="text" v-validate="'required|confirmed:password'" name="password2">
+        <i v-show="errors.has('password2')" class="fa fa-warning"></i>
+        <span v-show="errors.has('password2')" class="help is-danger"> {{ errors.first('password2') }} </span>
+      </p>
     </div>
     <div id="LoginSubmit" class="login-submit">
       <a href="#" class="signup">No Account!Sign Up</a>
@@ -21,13 +36,14 @@
    * ------------------------
    */
   import * as cfg from '../config/cfg'
+  import { Validator } from 'vee-validate'
   export default {
     name: 'RegPanel',
     data() {
       return {
         nickname: '',
         account: '',
-        password: ''
+        password: '',
       }
     },
     methods: {
@@ -50,6 +66,9 @@
             this.$router.push({path: '/push'});
           });
         }
+      },
+      Con() {
+        console.log(this.$validator.getErrors().errors[0]['msg']);
       }
     }
   }

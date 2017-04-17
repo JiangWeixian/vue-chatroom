@@ -42,6 +42,7 @@ The jobs of vue showed:
 ├── vue-material - UI库/Ｍaterial-design
 ├── vue-resource - vue向服务器发起请求
 ├── vue-router - 由于Vue属于单页面应用，该插件用于处理页面中不同路由跳转
+├── vee-validate - Front end verification
 ├── vue-style-loader
 ├── vue-template-compiler
 ├── vue-template-es2015-compiler
@@ -101,12 +102,13 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
 
 * [x] REG.vue
   * [x] panel
+  * [x] simple validate
 * [ ] REG-vuex
-  * [ ] action-check the format of nickname/account/passwd in front-side
+  * [x] post data to server
 * [ ] server
   * [x] check info in datasets
   * [x] add newuser-info into datasets
-  * [ ] add new Router process check nickname and password
+  * [ ] add new Router process check nickname and password, Returns in a specific format
 
 
 
@@ -155,3 +157,15 @@ The update of vuedetect-project:
 * in ./src/config/cfg.js - **create** this file, add some config for vue, **change** little codes in ./src/components/RegPanel.vue and ./src/components/LoingPanel.vue
 * in ./src/store/action.js - **add** func check, post nickname/account to server and check if nickname/account already exit
 * in ./server/router/check.js - **create** this file, and **create** check-router
+
+### 2017-4-13
+
+* in ./src/store/actions.js - **add** acthion-check
+* in ./src/components/RegPanel.vue - **add** blur event to dispatch action-check in store/action.js
+
+### 2017-4-17
+
+vee-validator&vue2.0 work in some places is not very good
+
+* in ./src/main.js - **add** vue.use(veevalidate) as our-project's validator
+* in ./src/componets/RegPanel - **add** simple name/email/password(comfired)
