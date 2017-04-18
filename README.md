@@ -103,8 +103,9 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
 * [x] REG.vue
   * [x] panel
   * [x] simple validate
+  * [x] validate nickname/account/password/passwordConfirmed in [vee-validate's](https://github.com/logaretm/vee-validate)api-way
 * [ ] REG-vuex
-  * [x] post data to server
+  * [x] action-check: post data to server
 * [ ] server
   * [x] check info in datasets
   * [x] add newuser-info into datasets
@@ -169,3 +170,9 @@ vee-validator&vue2.0 work in some places is not very good
 
 * in ./src/main.js - **add** vue.use(veevalidate) as our-project's validator
 * in ./src/componets/RegPanel - **add** simple name/email/password(comfired)
+
+### 2017-4-18
+
+* in ./src/componets/RegPanel.vue - **changed** name/email/password(comfired)'s validator in [vee-validate's](https://github.com/logaretm/vee-validate)api-way
+* in ./src/componets/RegPanel.vue - **add** error in data()
+* in ./src/config/cfg.js - **add** const tpl
