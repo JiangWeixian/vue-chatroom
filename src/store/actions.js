@@ -16,10 +16,17 @@ export const loginIn = ({ commit }, { nickname }) => {
 };
 
 export const check = ({ commit }, { item }) => {
-  Vue.http.post(cfg.url + 'check', { item })
-    .then(function (res) {
-      console.log('already exit')
-    }, function (res) {
-      console.log('not exit')
-    })
+  console.log(typeof item);
+  if (item.trim()) {
+    Vue.http.post(cfg.url + 'check', {item})
+      .then(function (res) {
+        console.log('already exit')
+      }, function (res) {
+        console.log('not exit')
+      })
+  }
+  else {
+    console.log('can\'t be empty');
+  }
 };
+

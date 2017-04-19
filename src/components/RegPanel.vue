@@ -2,9 +2,22 @@
   <div id="LoginPanel" class="login-panel">
     <p class="login-title">Welcome come here, {{ nickname }}</p>
     <div id="Logininfo" class="login-info">
-      <input type="text" v-model="nickname">
-      <input type="text" v-model="account">
-      <input type="text" v-model="password">
+      <p>
+        <input type="text" v-model="nickname" name="name">
+        <span class="help is-danger"> {{ error['nickname']['msg'] }} </span>
+      </p>
+      <p>
+        <input type="text" v-model="account" name="account">
+        <span class="help is-danger"> {{ error['account']['msg'] }} </span>
+      </p>
+      <p>
+        <input type="password" v-model="password" name="password">
+        <span class="help is-danger"> {{ error['password']['msg'] }} </span>
+      </p>
+      <p>
+        <input type="password" v-model="passwordConfirmed" name="passwordConfirmed">
+        <span class="help is-danger"> {{ error['passwordConfirmed']['msg'] }} </span>
+      </p>
     </div>
     <div id="LoginSubmit" class="login-submit">
       <a href="#" class="signup">No Account!Sign Up</a>
@@ -21,36 +34,109 @@
    * ------------------------
    */
   import * as cfg from '../config/cfg'
+  import { Validator } from 'vee-validate'
   export default {
     name: 'RegPanel',
+    validator: null,
     data() {
       return {
         nickname: '',
         account: '',
-        password: ''
+        password: '',
+        passwordConfirmed: '',
+        error: {
+          'nickname': {
+            'field': '',
+            'msg': '',
+            'rule': ''
+          },
+          'account': {
+            'field': '',
+            'msg': '',
+            'rule': ''
+          },
+          'password': {
+            'field': '',
+            'msg': '',
+            'rule': ''
+          },
+          'passwordConfirmed': {
+            'field': '',
+            'msg': '',
+            'rule': ''
+          }
+        }
+      }
+    },
+    watch: {
+      nickname(value) {
+        this.validator.validate('nickname', value).then(result => {
+          this.error['nickname'] = cfg.tpl;
+        }, error => {
+          this.error['nickname'] = this.validator.getErrors().errors[0];
+        })
+      },
+      account(value) {
+        this.validator.validate('account', value).then(result => {
+          this.error['account'] = cfg.tpl;
+        }, error =>{
+          this.error['account'] = this.validator.getErrors().errors[0];
+        });
+      },
+      password(value) {
+        this.validator.validate('password', value).then(result => {
+          this.error['password'] = cfg.tpl;
+        }, error => {
+          this.error['password'] = this.validator.getErrors().errors[0];
+        })
+      },
+      passwordConfirmed(value) {
+        this.validator.validate('passwordConfirmed', value).then(result => {
+          this.error['passwordConfirmed'] = cfg.tpl;
+        }, error => {
+          this.error['passwordConfirmed'] = this.validator.getErrors().errors[0];
+        })
       }
     },
     methods: {
       SignUp() {
         const nickname = this.nickname.trim(),
           account = this.account.trim(),
-          password = this.password.trim();
+          password = this.password.trim(),
+          passwordConfirmed = this.passwordConfirmed.trim();
 
-        if(nickname && account && password) {
-          this.$http.post(cfg.url + 'reg', {
-            nickname: nickname,
-            account: account,
-            password: password})
-            .then((res) => {
-            console.log('signup successly!already send email, please checkout!');
-            localStorage.setItem('token', res.body.token);
-            this.$store.dispatch('loginIn', { nickname });
-          }, (res) => {
-            console.log(res.status);
-            this.$router.push({path: '/push'});
-          });
-        }
+        this.validator.validateAll({
+          nickname: nickname,
+          account: account,
+          password: password,
+          passwordConfirmed: passwordConfirmed
+        }).then( result => {
+          if(nickname && account && password) {
+            this.$http.post(cfg.url + 'reg', {
+              nickname: nickname,
+              account: account,
+              password: password})
+              .then((res) => {
+                console.log('signup successly!already send email, please checkout!');
+                localStorage.setItem('token', res.body.token);
+                this.$store.dispatch('loginIn', { nickname });
+              }, (res) => {
+                console.log(res.status);
+                this.$router.push({path: '/push'});
+              });
+          }
+        }, error => {
+          console.log('please confirm your form data');
+        })
       }
+    },
+    created() {
+      this.validator = new Validator({
+        nickname: 'required|alpha_dash|min:6',
+        account: 'required|email',
+        password: 'required|alpha_num|min:6',
+        passwordConfirmed: 'required|confirmed:password'
+      })
     }
   }
 </script>

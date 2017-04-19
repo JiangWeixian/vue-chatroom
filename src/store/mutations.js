@@ -10,4 +10,3 @@ export const LOGIN_IN = (state, { nickname }) => {
 export const LOGIN_OUT = state => {
   state.login = false
 };
-
