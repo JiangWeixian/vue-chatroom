@@ -24,10 +24,13 @@ global.UTIL_PATH = path.join(ROOT_PATH, 'util/');
 /**
  * ExRra-Package&Variable
  * @loginRouter - process login post
+ * @regRouter - process reg post
+ * @checkRouter - process check reg-post-data partly
  */
 
 var loginRouter = require('./router/login');
 var regRouter = require('./router/reg');
+var checkRouter = require('./router/check');
 
 
 /**
@@ -46,6 +49,7 @@ app.use(bodyParser.urlencoded({extended: false}));
  * @use1 set cors to process request
  * @use2 set loginRouter
  * @use3 set regRouter
+ * @use4 set CheckRouter
  */
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -55,7 +59,7 @@ app.use(function(req, res, next) {
 });
 app.use(regRouter);
 app.use(loginRouter);
-
+app.use(checkRouter);
 
 /**
  * Testing
