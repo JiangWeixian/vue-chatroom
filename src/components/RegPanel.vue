@@ -35,6 +35,7 @@
    */
   import * as cfg from '../config/cfg'
   import { Validator } from 'vee-validate'
+  import { mapActions } from 'vuex'
   export default {
     name: 'RegPanel',
     validator: null,
@@ -71,14 +72,14 @@
     watch: {
       nickname(value) {
         this.validator.validate('nickname', value).then(result => {
-          this.error['nickname'] = cfg.tpl;
+          this.Check({ 'nickname': value });
         }, error => {
           this.error['nickname'] = this.validator.getErrors().errors[0];
         })
       },
       account(value) {
         this.validator.validate('account', value).then(result => {
-          this.error['account'] = cfg.tpl;
+          this.Check({ 'account': value });
         }, error =>{
           this.error['account'] = this.validator.getErrors().errors[0];
         });
@@ -99,6 +100,20 @@
       }
     },
     methods: {
+      Check( postdata ) {
+        this.$http.post(cfg.url + 'check', postdata )
+          .then(res => {
+            const msg = res.body;
+            const field = msg['field'];
+            this.error[field] = msg;
+          }, res => {
+            if(res.status == 301) {
+              const msg = res.body;
+              const field = msg['field'];
+              this.error[field] = msg;
+            }
+          });
+      },
       SignUp() {
         const nickname = this.nickname.trim(),
           account = this.account.trim(),

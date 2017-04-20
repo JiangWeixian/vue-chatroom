@@ -176,3 +176,11 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/componets/RegPanel.vue - **changed** name/email/password(comfired)'s validator in [vee-validate's](https://github.com/logaretm/vee-validate)api-way
 * in ./src/componets/RegPanel.vue - **add** error in data()
 * in ./src/config/cfg.js - **add** const tpl
+
+### 2017-4-19
+
+* in ./server/router/check.js - **fixed** bugs, **add** if post-data exit? return what kind of msgs
+* in ./server/config/tpl.js - **created** tpl.js as validator msg's template
+* in ./server/main.js - **add** checkRouer
+* in ./src/components/RegPanel.vue - **add** Check() in methods, now we can post data to server when this.validate(not this.validateAll) is true!
+* in ./src/store/actions.js - **remove** func check to in ./src/components/RegPanel.vue's Check() in methods
