@@ -1,5 +1,4 @@
-import * as types from './mutation-types'
-
+import Vue from 'vue'
 
 export const LOGIN_IN = (state, { nickname }) => {
   state.login = true;
@@ -8,5 +7,21 @@ export const LOGIN_IN = (state, { nickname }) => {
 };
 
 export const LOGIN_OUT = state => {
-  state.login = false
+  state.login = false;
+  state.nickname = '';
+  window.alert("login out")
 };
+
+export const SEND_MESSAGE = ( state, { message } ) => {
+  addMessage(state, message);
+};
+
+function addMessage(state, message) {
+  const thread = state.threads[message.threadId];
+  message.isRead = message.threadId == state.currentThreadId;
+  if(!thread.messages.some(id => id === message.id)) {
+    thread.messages.push(message.id);
+    thread.lastMessage = message
+  }
+  Vue.set(state.messages, message.id, message);
+}

@@ -104,14 +104,26 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
   * [x] panel
   * [x] simple validate
   * [x] validate nickname/account/password/passwordConfirmed in [vee-validate's](https://github.com/logaretm/vee-validate)api-way
-* [ ] REG-vuex
+* [x] REG-vuex
   * [x] action-check: post data to server
-* [ ] server
+* [x] server
   * [x] check info in datasets
   * [x] add newuser-info into datasets
-  * [ ] add new Router process check nickname and password, Returns in a specific format
+  * [x] add new Router process check nickname and password, Returns in a specific format
 
+### CHAT-ROOM
+Click wake-button, enter chatroom in each pages!**Still in Processing!**
 
+* [x] vue
+  * [x] init message from state
+* [ ] actions
+  * [x] sendMessage
+* [ ] mutations
+  * [x] add message to state
+* [ ] socket
+  * [ ] connect to server by socket
+* [ ] server
+  [ ] connect to client
 
 ### HOME-PAGE
 
@@ -184,3 +196,13 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./server/main.js - **add** checkRouer
 * in ./src/components/RegPanel.vue - **add** Check() in methods, now we can post data to server when this.validate(not this.validateAll) is true!
 * in ./src/store/actions.js - **remove** func check to in ./src/components/RegPanel.vue's Check() in methods
+
+### 2017-4-25
+
+* in ./src/components/Chat.vue&ChatMain.vue&ChatMainMessage.vue&ChatMainText.vue&ChatSiderbar.vue&ChatSiderbarCard.vue&ChatSiderbarList.vue - **create** those files, and codes in those files
+* in ./src/api - **created** this folder
+* in ./src/assets - **add** avatar.jpg
+* in ./src/store/getters - **add** export const currentThread&CcurrentMessage
+* in ./src/api/index.js - **created** func createMessage
+* in ./src/store/actions.js - **created** func sendMessage
+* in ./src/store/mutations.js - **created** func SEND_MESSAGE, and func addMessage

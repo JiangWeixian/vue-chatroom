@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <wake-button></wake-button>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import WakeButton from './components/WakeChat.vue'
+  export default {
+    name: 'app',
+    components: { WakeButton }
+  }
 </script>
 
 <style>
