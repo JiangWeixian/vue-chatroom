@@ -25,4 +25,8 @@ export const sendMessage = ({ commit }, payload) => {
     })
 };
 
+export const switchThread = ({ commit }, { threadId }) => {
+  commit(types.SWITCH_THREAD, { threadId });
+};
+
 

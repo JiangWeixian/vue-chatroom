@@ -1,7 +1,7 @@
 <template>
   <div class="infolist">
     <ul>
-      <li v-for="thread in sortedThreads" class="thread">
+      <li v-for="thread in sortedThreads" v-on:click="switchThread(thread.id)" class="thread">
         <img v-bind:src="thread.avatar" v-bind:alt="thread.name" class="thread-avatar">
         <div class="thread-info">
           <p class="thread-username">{{ thread.name }}</p>
@@ -30,6 +30,11 @@
         return this.threads
           .slice()
           .sort((a, b) => {return a.timestamp - b.timestamp})
+      }
+    },
+    methods: {
+      switchThread(threadId) {
+        this.$store.dispatch('switchThread', { threadId });
       }
     }
   }

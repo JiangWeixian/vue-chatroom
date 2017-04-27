@@ -16,6 +16,10 @@ export const SEND_MESSAGE = ( state, { message } ) => {
   addMessage(state, message);
 };
 
+export const SWITCH_THREAD = ( state, { threadId } ) => {
+  state.currentThreadId = threadId;
+};
+
 function addMessage(state, message) {
   const thread = state.threads[message.threadId];
   message.isRead = message.threadId == state.currentThreadId;

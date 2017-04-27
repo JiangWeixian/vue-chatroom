@@ -116,10 +116,18 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
 
 * [x] vue
   * [x] init message from state
+  * [x] init threads in list from state
+  * [x] add click thread func
+* [ ] api
+  * [x] create message template
+  * [ ] read office message from office.js
 * [ ] actions
   * [x] sendMessage
+  * [x] switch thread
 * [ ] mutations
   * [x] add message to state
+  * [ ] init office-message come from api
+  * [x] switch thread to set currentThreadId
 * [ ] socket
   * [ ] connect to server by socket
 * [ ] server
@@ -129,7 +137,7 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
 
 Should contain brief of this website.
 
-## Update
+## Update-JW
 The update of vuedetect-project:
 
 * **created**: create files from 0-1
@@ -212,3 +220,9 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/components/ChatSiderbarList.vue - **add** some codes to list threads
 * in ./src/components/ChatSiderbarList.vue&ChatMainMessage.vue - **changed** v-bind:src to show img-path in getters
 * in static/img - **created** this folder, and **move** avatar images to this folder
+
+### 2017-4-27
+
+* in ./src/components/ChatSiderBarList.vue - **add** func click to thread list
+* in ./src/store/actions.js - **add** func switch_thread
+* in ./src/store/mutations.js - **add** func SWITCH_THREAD

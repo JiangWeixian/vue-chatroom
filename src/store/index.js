@@ -19,30 +19,30 @@ const state = {
       messages: ['ms1', 'ms2', 'ms3', 'ms4'],
       lastClickStamp: Date.now(),
       lastMessage: {
-        id: 'ms6',
-        threadId: 'th2',
-        threadName: 'checklee',
-        authorName: 'checklee',
-        text: 'v1.5 commit',
-        timestamp: Date.now() - 3000,
-        avatar: 'static/img/friend/checklee.jpg',
-        isRead:false
+        id: 'ms1',
+        threadId: 'th1',
+        threadName: 'qidanta',
+        authorName: 'Saber',
+        text: 'v1.0 commit',
+        timestamp: Date.now(),
+        avatar: 'static/img/friend/Saber.jpg',
+        isRead:true
       }
     },
     th2: {
       id: 'th2',
       name: 'checklee',
       avatar: 'static/img/friend/checklee.jpg',
-      message: ['ms1'],
+      messages: ['ms5', 'ms6'],
       lastClickStamp: Date.now() - 3000,
       lassMessage: {
-        id: 'ms4',
-        threadId: 'th1',
-        threadName: 'qidanta',
-        authorName: 'Saber',
-        text: 'v1.3 commit',
-        timestamp: Date.now() - 9000,
-        avatar: 'static/img/friend/Saber.jpg',
+        id: 'ms5',
+        threadId: 'th2',
+        threadName: 'checklee',
+        authorName: 'checklee',
+        text: 'v1.4 commit',
+        timestamp: Date.now(),
+        avatar: 'static/img/friend/checklee.jpg',
         isRead:false
       }
     }
