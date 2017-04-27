@@ -10,13 +10,41 @@ const state = {
   login: false,
   nickname: 'Saber',
   currentThreadId: 'th1',
+  threadsList: ['th1', 'th2'],
   threads: {
     th1: {
       id: 'th1',
       name: 'qidanta',
-      avatar: ''
+      avatar: 'static/img/friend/checklee.jpg',
       messages: ['ms1', 'ms2', 'ms3', 'ms4'],
-      lastMessage: null
+      lastClickStamp: Date.now(),
+      lastMessage: {
+        id: 'ms6',
+        threadId: 'th2',
+        threadName: 'checklee',
+        authorName: 'checklee',
+        text: 'v1.5 commit',
+        timestamp: Date.now() - 3000,
+        avatar: 'static/img/friend/checklee.jpg',
+        isRead:false
+      }
+    },
+    th2: {
+      id: 'th2',
+      name: 'checklee',
+      avatar: 'static/img/friend/checklee.jpg',
+      message: ['ms1'],
+      lastClickStamp: Date.now() - 3000,
+      lassMessage: {
+        id: 'ms4',
+        threadId: 'th1',
+        threadName: 'qidanta',
+        authorName: 'Saber',
+        text: 'v1.3 commit',
+        timestamp: Date.now() - 9000,
+        avatar: 'static/img/friend/Saber.jpg',
+        isRead:false
+      }
     }
   },
   messages: {
@@ -27,6 +55,7 @@ const state = {
       authorName: 'Saber',
       text: 'v1.0 commit',
       timestamp: Date.now(),
+      avatar: 'static/img/friend/Saber.jpg',
       isRead:true
     },
     ms2: {
@@ -36,6 +65,7 @@ const state = {
       authorName: 'Saber',
       text: 'v1.1 commit',
       timestamp: Date.now() - 3000,
+      avatar: 'static/img/friend/Saber.jpg',
       isRead:true
     },
     ms3: {
@@ -45,6 +75,7 @@ const state = {
       authorName: 'Saber',
       text: 'v1.2 commit',
       timestamp: Date.now() - 6000,
+      avatar: 'static/img/friend/Saber.jpg',
       isRead:true
     },
     ms4: {
@@ -54,10 +85,33 @@ const state = {
       authorName: 'Saber',
       text: 'v1.3 commit',
       timestamp: Date.now() - 9000,
+      avatar: 'static/img/friend/Saber.jpg',
+      isRead:false
+    },
+    ms5: {
+      id: 'ms5',
+      threadId: 'th2',
+      threadName: 'checklee',
+      authorName: 'checklee',
+      text: 'v1.4 commit',
+      timestamp: Date.now(),
+      avatar: 'static/img/friend/checklee.jpg',
+      isRead:false
+    },
+    ms6: {
+      id: 'ms6',
+      threadId: 'th2',
+      threadName: 'checklee',
+      authorName: 'checklee',
+      text: 'v1.5 commit',
+      timestamp: Date.now() - 3000,
+      avatar: 'static/img/friend/checklee.jpg',
       isRead:false
     }
   }
 };
+
+
 
 export default new Vuex.Store({
   state,

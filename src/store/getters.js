@@ -16,5 +16,11 @@ export const currentMessage = state => {
     : [];
 };
 
+export const threads = state => {
+  return state.threadsList
+    ? state.threadsList.map(id => state.threads[id])
+    : [];
+};
+
 
 export const test = state => state.test;

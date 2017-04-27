@@ -206,3 +206,9 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/api/index.js - **created** func createMessage
 * in ./src/store/actions.js - **created** func sendMessage
 * in ./src/store/mutations.js - **created** func SEND_MESSAGE, and func addMessage
+
+### 2017-4-26
+
+* in ./src/components/ChatSiderbarList.vue - **add** some codes to list threads
+* in ./src/components/ChatSiderbarList.vue&ChatMainMessage.vue - **changed** v-bind:src to show img-path in getters
+* in static/img - **created** this folder, and **move** avatar images to this folder

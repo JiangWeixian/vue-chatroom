@@ -12,6 +12,10 @@ Vue.use(VueResource);
 Vue.use(VeeValidate);
 
 
+Vue.filter('time', timestamp => {
+  return new Date(timestamp).toLocaleTimeString()
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

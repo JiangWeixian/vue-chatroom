@@ -4,7 +4,7 @@
       <li v-for="message in sortedMessages" class="message">
         <p class="message-timestamp">{{ message.timestamp | time  }}</p>
         <div class="message-main">
-          <img src="../assets/avatar.jpg" alt="avatar" class="message-avatar">
+          <img v-bind:src="message.avatar" alt="avatar" class="message-avatar">
           <p class="message-content">{{ message.text }}</p>
         </div>
       </li>
@@ -29,11 +29,6 @@
         return this.messages
           .slice()
           .sort((a, b) => {return a.timestamp - b.timestamp})
-      }
-    },
-    filters: {
-      time(timestamp) {
-        return new Date(timestamp).toLocaleTimeString()
       }
     }
   }

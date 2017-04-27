@@ -21,7 +21,8 @@ function addMessage(state, message) {
   message.isRead = message.threadId == state.currentThreadId;
   if(!thread.messages.some(id => id === message.id)) {
     thread.messages.push(message.id);
-    thread.lastMessage = message
+    thread.lastMessage = message;
+    thread.lastClickStamp = message.timestamp;
   }
   Vue.set(state.messages, message.id, message);
 }
