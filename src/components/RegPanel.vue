@@ -75,6 +75,7 @@
     watch: {
       nickname(value) {
         this.validator.validate('nickname', value).then(result => {
+          this.error['nickname'] = cfg.tpl;
           this.Check({ 'nickname': value });
         }, error => {
           this.error['nickname'] = this.validator.getErrors().errors[0];
@@ -82,6 +83,7 @@
       },
       account(value) {
         this.validator.validate('account', value).then(result => {
+          this.error['account'] = cfg.tpl;
           this.Check({ 'account': value });
         }, error =>{
           this.error['account'] = this.validator.getErrors().errors[0];
