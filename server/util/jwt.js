@@ -12,7 +12,7 @@ var secret = jwt_config.secret;
 
 function encode(iss, exp, aud) {
   exp = arguments[1]? arguments[1]:60 * 60 * 1000;
-  aud = arguments[2]?arguments[2]:'vuedetect';
+  aud = arguments[2]? arguments[2]:'vuedetect';
   exp = Date.now() + exp;
   var token = Jwt.encode({
     iss: iss,
