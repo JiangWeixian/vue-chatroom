@@ -231,3 +231,5 @@ vee-validator&vue2.0 work in some places is not very good
 
 * in ./store/actions.js & ./store/mutation.js - **add** init officedata from ./api/officeDate.js done
 * in ./src/main.js - init office data when **npm run dev** by initMessage
+
+test
