@@ -28,7 +28,8 @@
             text: text,
             thread: this.currentThread,
             authorname: this.nickname
-          })
+          });
+          this.$socket.emit('login', {login: 'successfully'})
         }
         event.target.value = '';
       }

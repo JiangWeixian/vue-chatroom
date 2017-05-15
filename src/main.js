@@ -3,13 +3,17 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VeeValidate from 'vee-validate'
+import VueSocketio from 'vue-socket.io'
 import App from './App'
 import router from './router'
 import store from './store'
+import { initMessage } from './store/actions'
+import { url } from './config/cfg'
 
 Vue.config.productionTip = false;
 Vue.use(VueResource);
 Vue.use(VeeValidate);
+Vue.use(VueSocketio, url);
 
 
 Vue.filter('time', timestamp => {
@@ -24,3 +28,5 @@ new Vue({
   template: '<App/>',
   components: { App }
 });
+
+initMessage(store);

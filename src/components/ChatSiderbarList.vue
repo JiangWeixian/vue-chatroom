@@ -7,7 +7,7 @@
           <p class="thread-username">{{ thread.name }}</p>
           <span class="thread-timestamp">{{ thread.lastClickStamp | time }}</span>
         </div>
-        <p class="thread-lastmessage">11</p>
+        <p class="thread-lastmessage">{{ thread.lastMessage.text }}</p>
       </li>
     </ul>
   </div>

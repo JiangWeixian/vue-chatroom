@@ -1,7 +1,16 @@
 import { staticFriendAvatarPath } from '../config/cfg'
+import { officeData } from './officeData'
+
+export const initOfficeData = () => {
+  return new Promise((resolve, rejec) => {
+    if(officeData) {
+      resolve(officeData)
+    }
+  })
+};
 
 export const createMessage = ({ text, thread, authorname }) => {
-  return new Promise(function( resolve, reject ) {
+  return new Promise(( resolve, reject ) => {
     const timestamp = Date.now();
     const id = 'ms_' + timestamp;
     const message = {
@@ -13,7 +22,7 @@ export const createMessage = ({ text, thread, authorname }) => {
       timestamp: timestamp,
       avatar: staticFriendAvatarPath + authorname + '.jpg'
     };
-    if (message) {
+    if(message) {
       resolve(message)
     }
   })

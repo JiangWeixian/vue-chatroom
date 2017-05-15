@@ -226,3 +226,8 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/components/ChatSiderBarList.vue - **add** func click to thread list
 * in ./src/store/actions.js - **add** func switch_thread
 * in ./src/store/mutations.js - **add** func SWITCH_THREAD
+
+### 2017-5-16
+
+* in ./store/actions.js & ./store/mutation.js - **add** init officedata from ./api/officeDate.js done
+* in ./src/main.js - init office data when **npm run dev** by initMessage
