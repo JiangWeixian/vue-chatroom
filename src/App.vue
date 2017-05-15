@@ -12,12 +12,15 @@
             </div>
         </div>
         <router-view class="view"></router-view>
+        <wake-button></wake-button>
     </div>
 </template>
 
 <script>
+    import WakeButton from './components/WakeChat.vue'
     export default {
-        name: 'app'
+        name: 'app',
+        components: { WakeButton }
     }
 </script>
 

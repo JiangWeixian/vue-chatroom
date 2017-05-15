@@ -28,9 +28,12 @@
 
 <script>
   /**
-   *The RegPanel
+   * The RegPanel
    * ------------------------
-   * @ method-SignUp(still in building): post data to server, when status=200(ok), store token in localstorage; when status=301(not ok), go to Reg.vue
+   * @ methods-SignUp: post data to server, when status=200(ok), store token in localstorage; when status=301(not ok), go to Reg.vue
+   * @ methods-Check: post data to server when nickname/password validate-status is ok.
+   * @ watch-nickname/account/password/password_confirmed: if nickname/password changed do some jobs
+   * @ created: when RegPanel is created, do some jobs.
    * ------------------------
    */
   import * as cfg from '../config/cfg'

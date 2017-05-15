@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
@@ -31,6 +32,8 @@ global.UTIL_PATH = path.join(ROOT_PATH, 'util/');
 var loginRouter = require('./router/login');
 var regRouter = require('./router/reg');
 var checkRouter = require('./router/check');
+var chatSocket = require('./socket/chat');
+var index = require('./socket/index');
 
 
 /**
@@ -42,6 +45,9 @@ app = express();
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+var httpServer = http.Server(app);
+var io = require('socket.io')(httpServer);
 
 
 /**
@@ -62,7 +68,15 @@ app.use(loginRouter);
 app.use(checkRouter);
 
 /**
+ * Socket.io
+ * @ process chat data
+ */
+
+io.on('connection', index);
+io.on('connection', chatSocket);
+
+/**
  * Testing
  */
-app.listen(3000);
+httpServer.listen(3000);
 console.log(ROOT_PATH);

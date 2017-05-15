@@ -9,6 +9,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
     "vee-validate": "^2.0.0-beta.25",
@@ -16,6 +17,7 @@
     "vue-material": "^0.7.1",
     "vue-resource": "^1.2.1",
     "vue-router": "^2.2.0",
+    "vue-socket.io": "^2.1.1-a",
     "vuex": "^2.2.1"
   },
   "devDependencies": {

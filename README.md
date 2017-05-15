@@ -104,20 +104,40 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
   * [x] panel
   * [x] simple validate
   * [x] validate nickname/account/password/passwordConfirmed in [vee-validate's](https://github.com/logaretm/vee-validate)api-way
-* [ ] REG-vuex
+* [x] REG-vuex
   * [x] action-check: post data to server
-* [ ] server
+* [x] server
   * [x] check info in datasets
   * [x] add newuser-info into datasets
-  * [ ] add new Router process check nickname and password, Returns in a specific format
+  * [x] add new Router process check nickname and password, Returns in a specific format
 
+### CHAT-ROOM
+Click wake-button, enter chatroom in each pages!**Still in Processing!**
 
+* [x] vue
+  * [x] init message from state
+  * [x] init threads in list from state
+  * [x] add click thread func
+* [ ] api
+  * [x] create message template
+  * [ ] read office message from office.js
+* [ ] actions
+  * [x] sendMessage
+  * [x] switch thread
+* [ ] mutations
+  * [x] add message to state
+  * [ ] init office-message come from api
+  * [x] switch thread to set currentThreadId
+* [ ] socket
+  * [ ] connect to server by socket
+* [ ] server
+  [ ] connect to client
 
 ### HOME-PAGE
 
 Should contain brief of this website.
 
-## Update
+## Update-JW
 The update of vuedetect-project:
 
 * **created**: create files from 0-1
@@ -184,3 +204,32 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./server/main.js - **add** checkRouer
 * in ./src/components/RegPanel.vue - **add** Check() in methods, now we can post data to server when this.validate(not this.validateAll) is true!
 * in ./src/store/actions.js - **remove** func check to in ./src/components/RegPanel.vue's Check() in methods
+
+### 2017-4-25
+
+* in ./src/components/Chat.vue&ChatMain.vue&ChatMainMessage.vue&ChatMainText.vue&ChatSiderbar.vue&ChatSiderbarCard.vue&ChatSiderbarList.vue - **create** those files, and codes in those files
+* in ./src/api - **created** this folder
+* in ./src/assets - **add** avatar.jpg
+* in ./src/store/getters - **add** export const currentThread&CcurrentMessage
+* in ./src/api/index.js - **created** func createMessage
+* in ./src/store/actions.js - **created** func sendMessage
+* in ./src/store/mutations.js - **created** func SEND_MESSAGE, and func addMessage
+
+### 2017-4-26
+
+* in ./src/components/ChatSiderbarList.vue - **add** some codes to list threads
+* in ./src/components/ChatSiderbarList.vue&ChatMainMessage.vue - **changed** v-bind:src to show img-path in getters
+* in static/img - **created** this folder, and **move** avatar images to this folder
+
+### 2017-4-27
+
+* in ./src/components/ChatSiderBarList.vue - **add** func click to thread list
+* in ./src/store/actions.js - **add** func switch_thread
+* in ./src/store/mutations.js - **add** func SWITCH_THREAD
+
+### 2017-5-16
+
+* in ./store/actions.js & ./store/mutation.js - **add** init officedata from ./api/officeDate.js done
+* in ./src/main.js - init office data when **npm run dev** by initMessage
+
+test
