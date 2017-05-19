@@ -7,7 +7,7 @@ import VueSocketio from 'vue-socket.io'
 import App from './App'
 import router from './router'
 import store from './store'
-import { initMessage } from './store/actions'
+import { initMessage, intervalAuth } from './store/actions'
 import { url } from './config/cfg'
 
 Vue.config.productionTip = false;
@@ -30,3 +30,4 @@ new Vue({
 });
 
 initMessage(store);
+intervalAuth(store);

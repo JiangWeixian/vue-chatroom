@@ -1,5 +1,5 @@
 <template>
-  <div class="chat">
+  <div class="chat" v-bind:class="[ display? '':'hide' ]">
     <chat-siderbar></chat-siderbar>
     <chat-main></chat-main>
   </div>
@@ -11,6 +11,7 @@
   export default {
     name: 'Chat',
     components: {ChatMain, ChatSiderbar},
+    props: ['display'],
     data() {
       return {
         msg: ''
@@ -20,6 +21,12 @@
 </script>
 
 <style scoped>
+  .hide {
+    display: none;
+  }
+  .show {
+
+  }
   .chat-siderbar, .chat-main {
     display: inline-block;
   }

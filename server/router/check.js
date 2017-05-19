@@ -11,6 +11,7 @@ var mongodb = require(DATASETS_PATH + 'mongodb');
 var checkTpl = require(CONFIG_PATH + 'tpl').checkTpl;
 
 router.post('/check', function (req, res) {
+  console.log(req.body);
   var condition = req.body;
   var conditionKey = Object.keys(condition)[0];
   var tpl = checkTpl;

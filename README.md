@@ -118,21 +118,24 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
   * [x] init message from state
   * [x] init threads in list from state
   * [x] add click thread func
-* [ ] api
+* [x] api
   * [x] create message template
-  * [ ] read office message from office.js
+  * [x] read office message from office.js
 * [ ] actions
   * [x] sendMessage
   * [x] switch thread
 * [ ] mutations
   * [x] add message to state
-  * [ ] init office-message come from api
+  * [x] init office-message come from api
   * [x] switch thread to set currentThreadId
+  * [ ] store thread in local
 * [ ] socket
-  * [ ] connect to server by socket
+  * [x] connect to server by socket
+  * [ ] send message and receive
 * [ ] server
-  [ ] connect to client
-
+  * [x] connect to client
+  * [x] auth token
+ 
 ### HOME-PAGE
 
 Should contain brief of this website.
@@ -227,9 +230,18 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/store/actions.js - **add** func switch_thread
 * in ./src/store/mutations.js - **add** func SWITCH_THREAD
 
-### 2017-5-16
+### 2017-5-15
 
 * in ./store/actions.js & ./store/mutation.js - **add** init officedata from ./api/officeDate.js done
 * in ./src/main.js - init office data when **npm run dev** by initMessage
 
-test
+### 2017-5-16
+
+* in ./server/router/auth.js - **created** this file, and **add** simple auth rule
+* in ./src/compoents/WakeChat.vue - **add** simple auth by post token to server
+
+### 2017-5-18
+
+* in ./src/store/mutation.js - **changed** store nickname&&login in localStorage
+* in ./src/store/getters.hs - **changed** get state.nickname and state.login from localStorage
+* in ./src/main.js - **add** intervalAuth for auth token each one day!

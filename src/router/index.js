@@ -29,7 +29,7 @@ const router = new Router({
 });
 
 
-/*
+
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
   if(to.path == '/login') {
@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
       next('/push');
     }
     else {
-      next('/login');
+      next();
     }
   }
   else {
@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-*/
+
 
 
 export default router;

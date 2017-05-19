@@ -1,5 +1,7 @@
 import * as types from './mutation-types'
 import * as api from '../api'
+import * as cfg from '../config/cfg'
+import Vue from 'vue'
 
 /**
  * func loginIn: commit types.LOGIN_IN, change state
@@ -8,6 +10,8 @@ import * as api from '../api'
  * -------------------------------------------------------
  * func loginOut: commit types.LOGIN_OUT, change state
  * -------------------------------------------------------
+ * func initMessage: init data to state.threads/messages/threadList from ./src/api/officeDate.js
+ * ------------------------------------------------------
  * func sendMessage: click button send, send message in local browser
  * @param payload: data come from ChatMainText.vue, will be render in ChatMainMessage.vue
  * -------------------------------------------------------
@@ -39,6 +43,19 @@ export const sendMessage = ({ commit }, payload) => {
 
 export const switchThread = ({ commit }, { threadId }) => {
   commit(types.SWITCH_THREAD, { threadId });
+};
+
+export const intervalAuth = ({ commit }) => {
+  let token = localStorage.getItem('token');
+  if(token != null) {
+    setInterval(() => {
+      Vue.http.post(cfg.url + 'auth').then((res) => {
+        console.log('auth successfully')
+      }, (res) => {
+        commit(types.LOGIN_OUT)
+      })
+    },24*60*60*1000)
+  }
 };
 
 

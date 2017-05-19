@@ -1,12 +1,14 @@
 <template>
   <div class="wake-chat">
-    <button class="wakebutton">wake me</button>
-    <chat></chat>
+    <button class="wakebutton" v-on:click="Wake()">wake me</button>
+    <chat v-bind:display="logined"></chat>
   </div>
 </template>
 
 <script>
-  import Chat from "./Chat";
+  import Chat from "./Chat"
+  import * as cfg from '../config/cfg'
+  import { mapGetters } from 'vuex'
   /**
    * WakeButton vue - this button appear on every pages, and contain some small extendtions
    * ---------------
@@ -18,6 +20,28 @@
       return {
         msg: ''
       }
+    },
+    computed: {
+      ...mapGetters({
+        nickname: 'nickname',
+        logined: 'logined'
+      })
+    },
+    methods: {
+      Wake() {
+        if(this.logined) {
+
+        }
+      }
+    },
+    created() {
+      this.$http.post(cfg.url + 'auth').then((res) => {
+        console.log('ok');
+      }, (res) => {
+        console.log(res.body);
+        this.$store.dispatch('loginOut');
+        this.$router.push({path: '/login'})
+      })
     }
   }
 </script>

@@ -32,6 +32,7 @@ global.UTIL_PATH = path.join(ROOT_PATH, 'util/');
 var loginRouter = require('./router/login');
 var regRouter = require('./router/reg');
 var checkRouter = require('./router/check');
+var authRouter = require('./router/auth');
 var chatSocket = require('./socket/chat');
 var index = require('./socket/index');
 
@@ -66,6 +67,7 @@ app.use(function(req, res, next) {
 app.use(regRouter);
 app.use(loginRouter);
 app.use(checkRouter);
+app.use(authRouter);
 
 /**
  * Socket.io
@@ -73,7 +75,6 @@ app.use(checkRouter);
  */
 
 io.on('connection', index);
-io.on('connection', chatSocket);
 
 /**
  * Testing

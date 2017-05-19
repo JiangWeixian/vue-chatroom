@@ -3,14 +3,19 @@ import { staticFriendAvatarPath } from '../config/cfg'
 
 
 export const LOGIN_IN = (state, { nickname }) => {
-  state.login = true;
-  state.nickname = nickname;
+  localStorage.setItem('nickname', nickname);
+  localStorage.setItem('login', true);
+  state.login = localStorage.getItem('login');
+  state.nickname = localStorage.getItem('nickname');
   window.alert("login successfully");
 };
 
 export const LOGIN_OUT = state => {
-  state.login = false;
-  state.nickname = '';
+  localStorage.setItem('nickname', '');
+  localStorage.setItem('login', false);
+  state.login = localStorage.getItem('login');
+  state.nickname = localStorage.getItem('nickname');
+  localStorage.setItem('token', null);
   window.alert("login out")
 };
 
