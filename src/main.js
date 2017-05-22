@@ -28,6 +28,5 @@ new Vue({
   template: '<App/>',
   components: { App }
 });
-
 initMessage(store);
 intervalAuth(store);

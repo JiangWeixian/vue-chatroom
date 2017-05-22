@@ -1,7 +1,5 @@
-function chat(Socket) {
-  Socket.on('login', function (data) {
-    console.log(data)
-  })
+function chat(data) {
+
 }
 
 module.exports = chat;

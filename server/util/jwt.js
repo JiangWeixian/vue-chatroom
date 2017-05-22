@@ -17,7 +17,7 @@ function encode(sub, exp, aud) {
   exp = Date.now() + exp;
   var token = Jwt.encode({
     iss: aud,
-    exp: exp,
+    exp: Date.now() + exp,
     sub: sub,
     aud: aud
   }, secret);
@@ -28,13 +28,13 @@ function decode(token) {
   return new Promise(function (resolve, reject) {
     try {
       var decodetoken = Jwt.decode(token, secret);
-      resolve(decodetoken)
     }
     catch(e) {
       reject('token is invaild')
     }
-
+    resolve(decodetoken)
   });
+  // return Jwt.decode(token, secret);
 }
 
 

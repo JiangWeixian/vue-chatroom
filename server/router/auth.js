@@ -13,8 +13,8 @@ var iss = jwtConfig.iss
   ,secret = jwtConfig.secret;
 
 router.post('/auth', function (req, res) {
-  var token = req.body.token || req.Authorization;
-  var decodetoken = jwt.decode(token);
+  var token = req.body.token || req.headers['authorization'];
+  console.log(token);
   var now = Date.now();
 
   if(token) {

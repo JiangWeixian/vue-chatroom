@@ -24,9 +24,6 @@
   .hide {
     display: none;
   }
-  .show {
-
-  }
   .chat-siderbar, .chat-main {
     display: inline-block;
   }

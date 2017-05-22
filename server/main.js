@@ -34,7 +34,7 @@ var regRouter = require('./router/reg');
 var checkRouter = require('./router/check');
 var authRouter = require('./router/auth');
 var chatSocket = require('./socket/chat');
-var index = require('./socket/index');
+var index = require('./socket/login');
 
 
 /**
@@ -74,7 +74,35 @@ app.use(authRouter);
  * @ process chat data
  */
 
-io.on('connection', index);
+io.on('connection',
+  function(Socket) {
+    console.log('connect successfully');
+    var userSocketMap = {};
+    Socket.on('login', function (data) {
+      Socket.name = data.user;
+      userSocketMap[data.user] = Socket.id;
+      Socket.join(userSocketMap[data.user], function () {
+        console.log('join successfully')
+      });
+      Socket.on('message', function (data) {
+        console.log('message:');
+        console.log(data);
+        console.log(Socket.id);
+        if(data.to != 'all') {
+          console.log(Socket.rooms);
+          io.to(userSocketMap[data.to]).emit('message', {
+            text: data.text,
+            author: data.author
+          })
+          // Socket.emit('message', {
+          //   text: data.message,
+          //   author: data.author
+          // })
+        }
+      });
+    })
+  }
+);
 
 /**
  * Testing

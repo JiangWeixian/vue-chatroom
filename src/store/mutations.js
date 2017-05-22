@@ -32,7 +32,8 @@ export const INIT_OFFICEDATA = ( state, { messages } ) => {
     }
     addMessage(state, message)
   });
-  setCurrentThread(state, lastestMessage.threadId)
+  setCurrentThread(state, lastestMessage.threadId);
+  localStorage.setItem('threads', state.threads);
 };
 
 export const SEND_MESSAGE = ( state, { message } ) => {
@@ -53,6 +54,7 @@ function setCurrentThread(state, threadId) {
     debugger
   }
   state.threads[threadId].lastMessage.isRead = true;
+  state.threads[threadId].lastClickStamp = Date.now();
 }
 
 function createThread(state, threadId, threadName) {

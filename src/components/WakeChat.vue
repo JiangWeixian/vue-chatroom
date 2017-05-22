@@ -1,7 +1,7 @@
 <template>
   <div class="wake-chat">
     <button class="wakebutton" v-on:click="Wake()">wake me</button>
-    <chat v-bind:display="logined"></chat>
+    <chat v-bind:display="display"></chat>
   </div>
 </template>
 
@@ -18,7 +18,7 @@
     components: {Chat},
     data() {
       return {
-        msg: ''
+        display: false
       }
     },
     computed: {
@@ -29,18 +29,21 @@
     },
     methods: {
       Wake() {
-        if(this.logined) {
-
-        }
+        this.display = !this.display;
       }
     },
     created() {
       this.$http.post(cfg.url + 'auth').then((res) => {
-        console.log('ok');
+        this.$socket.emit('login', {user: this.nickname})
       }, (res) => {
         console.log(res.body);
-        this.$store.dispatch('loginOut');
-        this.$router.push({path: '/login'})
+        if(res.status == 301) {
+          this.$store.dispatch('loginOut');
+          this.$router.push({path: '/login'})
+        }
+        else {
+          window.alert('there is no network!')
+        }
       })
     }
   }

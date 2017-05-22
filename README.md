@@ -131,7 +131,9 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
   * [ ] store thread in local
 * [ ] socket
   * [x] connect to server by socket
-  * [ ] send message and receive
+  * [x] send message and receive(me send to me)
+  * [x] xmind for message flow
+  * [ ] add/delte friend!
 * [ ] server
   * [x] connect to client
   * [x] auth token
@@ -151,7 +153,7 @@ The update of vuedetect-project:
 
 ### 2017-4-5
 
-* in ./src/router/index.js - **add** beforeach
+* in ./src/router/login.js - **add** beforeach
 * in ./src/store/action.js - **move** fuction LoginIn to loginPanel.vue: **add** stored token in localstorage/vue.router.go(not test)
 * in ./server/router/login.js - when accout&password are found in datasets: response token
 
@@ -214,7 +216,7 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/api - **created** this folder
 * in ./src/assets - **add** avatar.jpg
 * in ./src/store/getters - **add** export const currentThread&CcurrentMessage
-* in ./src/api/index.js - **created** func createMessage
+* in ./src/api/login.js - **created** func createMessage
 * in ./src/store/actions.js - **created** func sendMessage
 * in ./src/store/mutations.js - **created** func SEND_MESSAGE, and func addMessage
 
@@ -238,10 +240,23 @@ vee-validator&vue2.0 work in some places is not very good
 ### 2017-5-16
 
 * in ./server/router/auth.js - **created** this file, and **add** simple auth rule
-* in ./src/compoents/WakeChat.vue - **add** simple auth by post token to server
+* in ./src/compoents/WakeBuutton.vue - **add** simple auth by post token to server
 
 ### 2017-5-18
 
 * in ./src/store/mutation.js - **changed** store nickname&&login in localStorage
 * in ./src/store/getters.hs - **changed** get state.nickname and state.login from localStorage
 * in ./src/main.js - **add** intervalAuth for auth token each one day!
+
+### 2017-5-19
+
+* in ./src/components/WakeChat.vue & ./src/componets/Chat.vue - **add** props display, the methods Wake() in WakeButton.vue comtrol Chat.vue SHOW or HIDE!
+* in ./src/compoents/WakeButton.vue & in ./server/router/auth.js - **fixed** some bugs when auth token  
+
+### 2017-5-20
+
+Learn use **Socket.io(npm socket.io --version = v3.5.2)**, find:
+
+* io.to - can send message to sender
+* socket.to & socket.broadcast.to - can't send message to sender, maybe only send message to others sockets!
+* in ./src/components/ChatMainMessage.vue - **add** socket `message` for receive message, so simple online chat room is completed!

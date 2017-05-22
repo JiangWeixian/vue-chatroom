@@ -23,12 +23,25 @@
     },
     computed: {
       ...mapGetters({
-        messages: 'currentMessage'
+        messages: 'currentMessage',
+        nickname: 'nickname',
+        currentThread: 'currentThread'
       }),
       sortedMessages() {
         return this.messages
           .slice()
           .sort((a, b) => {return a.timestamp - b.timestamp})
+      }
+    },
+    created() {
+      this.$options.sockets.message = (msg) => {
+        this.$store.dispatch('sendMessage', {
+          text: msg.text,
+          thread: this.currentThread,
+          authorname: msg.author
+        });
+        console.log(this.$socket.id);
+        console.log(msg)
       }
     }
   }

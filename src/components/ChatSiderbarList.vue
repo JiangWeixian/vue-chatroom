@@ -29,7 +29,7 @@
       sortedThreads() {
         return this.threads
           .slice()
-          .sort((a, b) => {return a.timestamp - b.timestamp})
+          .sort((a, b) => {return b.lastClickStamp - a.lastClickStamp})
       }
     },
     methods: {
