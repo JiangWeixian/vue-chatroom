@@ -133,6 +133,7 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
   * [x] connect to server by socket
   * [x] send message and receive(me send to me)
   * [x] xmind for message flow
+  * [x] store messsages in localStorage
   * [ ] add/delte friend!
 * [ ] server
   * [x] connect to client
@@ -260,3 +261,8 @@ Learn use **Socket.io(npm socket.io --version = v3.5.2)**, find:
 * io.to - can send message to sender
 * socket.to & socket.broadcast.to - can't send message to sender, maybe only send message to others sockets!
 * in ./src/components/ChatMainMessage.vue - **add** socket `message` for receive message, so simple online chat room is completed!
+
+### 2017-5-21
+
+* in ./src/api/index.js - **changed** initOfficeData() and createMessage(), now we can store messages in localstorage! 
+* in ./src/main.js - **remove** intervalAuth(), because F5 refresh main.js will dispatch this function!

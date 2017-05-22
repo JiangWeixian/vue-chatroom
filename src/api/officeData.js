@@ -1,7 +1,7 @@
 export const officeData = [
   {
     id: 'm_1',
-    threadId: 't_1',
+    threadId: 'a',
     threadName: 'checklee',
     authorName: 'checklee',
     text: 'Hey Jing, want to give a Flux talk at ForwardJS?',
@@ -10,7 +10,7 @@ export const officeData = [
   },
   {
     id: 'm_2',
-    threadId: 't_1',
+    threadId: 'a',
     threadName: 'checklee',
     authorName: 'checklee',
     text: 'Seems like a pretty cool conference.',
@@ -19,7 +19,7 @@ export const officeData = [
   },
   {
     id: 'm_3',
-    threadId: 't_1',
+    threadId: 'a',
     threadName: 'checklee',
     authorName: 'Saber',
     text: 'Sounds good.  Will they be serving dessert?',

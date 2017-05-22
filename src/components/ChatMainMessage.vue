@@ -25,7 +25,7 @@
       ...mapGetters({
         messages: 'currentMessage',
         nickname: 'nickname',
-        currentThread: 'currentThread'
+        threads: 'threads'
       }),
       sortedMessages() {
         return this.messages
@@ -37,7 +37,7 @@
       this.$options.sockets.message = (msg) => {
         this.$store.dispatch('sendMessage', {
           text: msg.text,
-          thread: this.currentThread,
+          thread: this.$store.state.threads[msg.author],
           authorname: msg.author
         });
         console.log(this.$socket.id);

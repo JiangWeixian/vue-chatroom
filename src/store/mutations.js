@@ -24,7 +24,7 @@ export const INIT_OFFICEDATA = ( state, { messages } ) => {
   state.threadsList = [];
   messages.forEach(message => {
     if(!state.threads[message.threadId]) {
-      createThread(state, message.threadId, message.threadName)
+      createThread(state, message.threadId, message.threadName);
       initThreadsList(state, message.threadId)
     }
     if(!lastestMessage || message.timestamp > lastestMessage.timestamp) {
@@ -33,7 +33,6 @@ export const INIT_OFFICEDATA = ( state, { messages } ) => {
     addMessage(state, message)
   });
   setCurrentThread(state, lastestMessage.threadId);
-  localStorage.setItem('threads', state.threads);
 };
 
 export const SEND_MESSAGE = ( state, { message } ) => {
