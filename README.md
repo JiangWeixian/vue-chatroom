@@ -39,7 +39,7 @@ The jobs of vue showed:
 ├── vue
 ├── vue-hot-reload-api
 ├── vue-loader
-├── vue-material - UI库/Ｍaterial-design
+├── muse-ui - UI库/Ｍaterial-design
 ├── vue-resource - vue向服务器发起请求
 ├── vue-router - 由于Vue属于单页面应用，该插件用于处理页面中不同路由跳转
 ├── vee-validate - Front end verification
@@ -94,6 +94,11 @@ Should contain funcs of datasets.
   * [x] move secret into config
 * [x] login.vue
   * [x] modify postdata
+* [ ] UI
+  * [ ] background
+  * [ ] input filed
+  * [ ] hello bar
+  * [ ] button
   
 **func complete!**
 
@@ -134,6 +139,7 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
   * [x] send message and receive(me send to me)
   * [x] xmind for message flow
   * [x] store messsages in localStorage
+  * [ ] send message from another side!(in .js file)
   * [ ] add/delte friend!
 * [ ] server
   * [x] connect to client
@@ -266,3 +272,23 @@ Learn use **Socket.io(npm socket.io --version = v3.5.2)**, find:
 
 * in ./src/api/index.js - **changed** initOfficeData() and createMessage(), now we can store messages in localstorage! 
 * in ./src/main.js - **remove** intervalAuth(), because F5 refresh main.js will dispatch this function!
+
+### 2017-5-23
+
+how can i detect client leave our website(in socket)? those below is what i found!:
+
+* close tab -> emit disconnect? - no! user may open link in new tab!
+* refresh/duplicate will create a new Socket connect to server!
+* close tab will auto emit disconnect event!
+* user-socket.id - socket.id should be a array!
+
+big boom!
+
+* add a name(data.user) to each socket, when disconnet, i can know which one disconnect!
+
+### 2017-5-23
+
+* in ./src/server/main.js - **add** logoutsocket process disconnect event!
+* in ./src/server/socket/logout.js - **created** this file
+
+

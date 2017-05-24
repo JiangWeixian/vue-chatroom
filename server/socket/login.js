@@ -1,37 +1,27 @@
-
 /**
  * login socket, and others sockets should use after login!
  * ------------------------
  * @on-login: when wakebutton was created!
  *          - data.user are login user
+ *          - maybe we should store USERSOCKETMAP(and as a argument) in datasets, and every login fetch socketArr! every disconnect upd
  * ------------------------
  */
 
 function socketLogin(Socket) {
   console.log('connect successfully');
-  var userSocketMap = {};
+  console.log(Socket.id);
   Socket.on('login', function (data) {
     Socket.name = data.user;
-    userSocketMap[data.user] = Socket.id;
-    Socket.join(userSocketMap[data.user], function () {
-      console.log('join successfully')
-    });
-    Socket.on('message', function (data) {
-      console.log('message:');
-      console.log(data);
-      console.log(Socket.id);
-      if(data.to != 'all') {
-        console.log(Socket.rooms);
-        Socket.in(userSocketMap[data.to]).emit('message', {
-          text: data.text,
-          author: data.author
-        })
-        // Socket.emit('message', {
-        //   text: data.message,
-        //   author: data.author
-        // })
-      }
-    });
+    var socketArr = USERSOCKETMAP[data.user];
+    console.log(Socket.name);
+    if(!!socketArr){
+      socketArr.push({ id: Socket.id, connect: true });
+    }
+    else {
+      USERSOCKETMAP[data.user] = [];
+      USERSOCKETMAP[data.user].push({ id: Socket.id, connect: true });
+      console.log(USERSOCKETMAP[data.user]);
+    }
   })
 }
 

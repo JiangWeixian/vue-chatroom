@@ -45,6 +45,9 @@
           window.alert('there is no network!')
         }
       })
+    },
+    beforeDestroy() {
+      this.$socket.emit('logout', {user: this.nickname})
     }
   }
 </script>

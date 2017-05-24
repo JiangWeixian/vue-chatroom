@@ -3,7 +3,7 @@ import { officeData } from './officeData'
 
 export const initOfficeData = () => {
   return new Promise((resolve, rejec) => {
-    //localStorage.setItem('messages', '');
+    localStorage.setItem('messages', '');
     let messages;
     if(!!localStorage.getItem('messages')) {
       messages = JSON.parse(localStorage.getItem('messages'));

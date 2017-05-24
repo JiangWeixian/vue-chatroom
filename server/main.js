@@ -15,12 +15,14 @@ var path = require('path');
  * @DATASETS_PATH ./server/datasets
  * @ROUTER_PATH ./server/router
  * @UTIL_PATH ./server/util
+ * @USERSOCKETMAP store (user, socket.id)
  */
 global.ROOT_PATH = __dirname;
 global.CONFIG_PATH = path.join(ROOT_PATH, 'config/');
 global.DATASETS_PATH = path.join(ROOT_PATH, 'datasets/');
 global.ROUTER_PATH = path.join(ROOT_PATH, 'router/');
 global.UTIL_PATH = path.join(ROOT_PATH, 'util/');
+global.USERSOCKETMAP = {};
 
 /**
  * ExRra-Package&Variable
@@ -34,7 +36,9 @@ var regRouter = require('./router/reg');
 var checkRouter = require('./router/check');
 var authRouter = require('./router/auth');
 var chatSocket = require('./socket/chat');
-var index = require('./socket/login');
+var loginSocket = require('./socket/login');
+var logoutSocket = require('./socket/logout');
+var chatSocket = require('./socket/chat');
 
 
 /**
@@ -74,35 +78,15 @@ app.use(authRouter);
  * @ process chat data
  */
 
-io.on('connection',
-  function(Socket) {
-    console.log('connect successfully');
-    var userSocketMap = {};
-    Socket.on('login', function (data) {
-      Socket.name = data.user;
-      userSocketMap[data.user] = Socket.id;
-      Socket.join(userSocketMap[data.user], function () {
-        console.log('join successfully')
-      });
-      Socket.on('message', function (data) {
-        console.log('message:');
-        console.log(data);
-        console.log(Socket.id);
-        if(data.to != 'all') {
-          console.log(Socket.rooms);
-          io.to(userSocketMap[data.to]).emit('message', {
-            text: data.text,
-            author: data.author
-          })
-          // Socket.emit('message', {
-          //   text: data.message,
-          //   author: data.author
-          // })
-        }
-      });
-    })
-  }
-);
+
+io.on('connection', loginSocket);
+io.on('connection', chatSocket);
+io.on('connection', logoutSocket);
+
+setInterval(function () {
+  console.log('========');
+  console.log(USERSOCKETMAP);
+}, 5000);
 
 /**
  * Testing
