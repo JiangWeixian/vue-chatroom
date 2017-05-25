@@ -1,13 +1,13 @@
 <template>
-  <mu-paper id="LoginPanel" class="login-panel" :zDepth="2">
+  <mu-paper id="LoginPanel" class="login-panel clearfix" :zDepth="2">
     <p class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">HELLO, {{ nickname }}</p>
     <div id="Logininfo" class="login-info">
       <mu-text-field label="NAME"  class="input" v-model="nickname" labelFloat/>
       <mu-text-field label="PASSWORD" class="input" v-model="password" type="password" labelFloat/>
     </div>
-    <div id="LoginSubmit" class="login-submit">
+    <div id="LoginSubmit" class="login-submit pull-left">
       <a href="#" class="signup">No Account!Sign Up</a>
-      <mu-raised-button label="LOGIN" class="demo-raised-button" v-on:click="loginIn()" primary/>
+      <mu-raised-button label="LOGIN" class="button-login" v-on:click="loginIn()" primary/>
     </div>
   </mu-paper>
 </template>
@@ -59,28 +59,32 @@
   .login-panel {
     width: 30%;
     margin: 0em auto;
-    padding-top: 7em;
     position: relative;
+    background-color: #ffffff;
     top: calc(50% - 17em);
-    background-color: #1976d2;
     text-indent: 2em;
   }
   .login-panel .login-title {
+    padding-top: 4em;
     font-size: 2em;
     line-height: 4em;
     color: #ffffff;
+    background-color: #1976d2;
   }
   .login-panel .login-info {
     padding: 0 2em;
     text-indent: 0em;
-    background-color: #ffffff;
   }
   .login-panel .login-info .input{
     width: 100%;
   }
   .login-panel .login-submit {
-    padding: 2em 2em;
+    padding: 2em;
     color: black;
-    background-color: #ffffff;
+  }
+  .login-panel .login-submit .signup {
+    color: #ccc;
+    text-decoration: underline;
+    margin-right: 1em;
   }
 </style>
