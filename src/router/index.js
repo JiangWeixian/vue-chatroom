@@ -32,7 +32,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
-  if(to.path == '/login') {
+  if(to.path == '/reg') {
     if(token != 'null' && token != null) {
       console.log("get token");
       next('/push');

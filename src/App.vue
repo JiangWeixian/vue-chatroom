@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="header">
+        <header>
             <ul class="application">
                 <li><router-link to="/">Home</router-link></li>
                 <li><router-link to="/push/Saber">Blog</router-link></li>
@@ -10,7 +10,7 @@
                 <router-link to="/reg">Reg</router-link>
                 <router-link to="/push/myblog">MyBlog</router-link>
             </div>
-        </div>
+        </header>
         <router-view class="view"></router-view>
         <wake-button></wake-button>
     </div>
@@ -48,4 +48,7 @@
     .view {
         clear: both;
     }
+  header {
+    display: none;
+  }
 </style>

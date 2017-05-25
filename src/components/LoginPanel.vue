@@ -1,15 +1,15 @@
 <template>
-  <div id="LoginPanel" class="login-panel">
-    <p class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">hello, {{ nickname }}</p>
+  <mu-paper id="LoginPanel" class="login-panel" :zDepth="2">
+    <p class="login-title" v-bind:class="[ activeNameClass? 'name':'message' ]">HELLO, {{ nickname }}</p>
     <div id="Logininfo" class="login-info">
-      <input type="text" v-model="nickname">
-      <input type="text" v-model="password">
+      <mu-text-field label="NAME"  class="input" v-model="nickname" labelFloat/>
+      <mu-text-field label="PASSWORD" class="input" v-model="password" type="password" labelFloat/>
     </div>
     <div id="LoginSubmit" class="login-submit">
       <a href="#" class="signup">No Account!Sign Up</a>
-      <button type="submit" v-on:click="loginIn()">Login</button>
+      <mu-raised-button label="LOGIN" class="demo-raised-button" v-on:click="loginIn()" primary/>
     </div>
-  </div>
+  </mu-paper>
 </template>
 
 <script>
@@ -21,7 +21,11 @@
    */
   import { mapActions, mapGetters } from 'vuex'
   import * as cfg from '../config/cfg'
+  import MuRaisedButton from "../../node_modules/muse-ui/src/raisedButton/raisedButton";
+  import MuTextField from "../../node_modules/muse-ui/src/textField/textField";
+  import MuPaper from "../../node_modules/muse-ui/src/paper/paper";
   export default {
+    components: {MuPaper, MuTextField, MuRaisedButton},
     name: 'LoginPanel',
     data() {
       return {
@@ -54,11 +58,29 @@
 <style scoped>
   .login-panel {
     width: 30%;
-    padding: 20em 2em;
-    margin: 0 auto;
+    margin: 0em auto;
+    padding-top: 7em;
+    position: relative;
+    top: calc(50% - 17em);
+    background-color: #1976d2;
+    text-indent: 2em;
+  }
+  .login-panel .login-title {
+    font-size: 2em;
+    line-height: 4em;
+    color: #ffffff;
+  }
+  .login-panel .login-info {
+    padding: 0 2em;
+    text-indent: 0em;
     background-color: #ffffff;
   }
+  .login-panel .login-info .input{
+    width: 100%;
+  }
   .login-panel .login-submit {
+    padding: 2em 2em;
     color: black;
+    background-color: #ffffff;
   }
 </style>
