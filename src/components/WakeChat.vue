@@ -1,6 +1,6 @@
 <template>
   <div class="wake-chat">
-    <button class="wakebutton" v-on:click="Wake()">wake me</button>
+    <mu-float-button icon="chat" v-on:click="Wake()" class="wakebutton"/>
     <chat v-bind:display="display"></chat>
   </div>
 </template>
@@ -9,13 +9,15 @@
   import Chat from "./Chat"
   import * as cfg from '../config/cfg'
   import { mapGetters } from 'vuex'
+  import MuFlatButton from "../../node_modules/muse-ui/src/flatButton/flatButton";
+  import MuFloatButton from "../../node_modules/muse-ui/src/floatButton/floatButton";
   /**
    * WakeButton vue - this button appear on every pages, and contain some small extendtions
    * ---------------
    */
   export default {
     name: 'WakeChat',
-    components: {Chat},
+    components: {MuFloatButton, Chat},
     data() {
       return {
         display: false

@@ -1,29 +1,17 @@
 <template>
-  <div id="LoginPanel" class="login-panel">
-    <p class="login-title">Welcome come here, {{ nickname }}</p>
-    <div id="Logininfo" class="login-info">
-      <p>
-        <input type="text" v-model="nickname" name="name">
-        <span class="help is-danger"> {{ error['nickname']['msg'] }} </span>
-      </p>
-      <p>
-        <input type="text" v-model="account" name="account">
-        <span class="help is-danger"> {{ error['account']['msg'] }} </span>
-      </p>
-      <p>
-        <input type="password" v-model="password" name="password">
-        <span class="help is-danger"> {{ error['password']['msg'] }} </span>
-      </p>
-      <p>
-        <input type="password" v-model="passwordConfirmed" name="passwordConfirmed">
-        <span class="help is-danger"> {{ error['passwordConfirmed']['msg'] }} </span>
-      </p>
+  <mu-paper id="RegPanel" class="login-panel clearfix">
+    <p class="login-title">Welcome, {{ nickname }}</p>
+    <div id="Reginfo" class="login-info">
+      <mu-text-field hintText="NAME" icon="account_circle" v-model="nickname" name="name" class="input" :errorText="error['nickname']['msg']"/>
+      <mu-text-field hintText="ACCOUNT" icon="email" v-model="account" name="account" class="input" :errorText="error['account']['msg']"/>
+      <mu-text-field hintText="PASSWORD" type="password" icon="content_paste" v-model="password" name="password" class="input" :errorText="error['password']['msg']"/>
+      <mu-text-field hintText="CONFIRM" type="password" icon="content_paste" v-model="passwordConfirmed" name="passwordConfirmd" class="input" :errorText="error['passwordConfirmed']['msg']"/>
     </div>
-    <div id="LoginSubmit" class="login-submit">
-      <a href="#" class="signup">No Account!Sign Up</a>
-      <button type="submit" v-on:click="SignUp()">Login</button>
+    <div id="LoginSubmit" class="login-submit pull-left">
+      <a href="/login" class="login link">Already have a account?Just Login</a>
+      <mu-raised-button label="SIGNUP" class="button-login" v-on:click="SignUp()" primary/>
     </div>
-  </div>
+  </mu-paper>
 </template>
 
 <script>
@@ -39,7 +27,11 @@
   import * as cfg from '../config/cfg'
   import { Validator } from 'vee-validate'
   import { mapActions } from 'vuex'
+  import MuTextField from "../../node_modules/muse-ui/src/textField/textField";
+  import MuRaisedButton from "../../node_modules/muse-ui/src/raisedButton/raisedButton";
+  import MuPaper from "../../node_modules/muse-ui/src/paper/paper";
   export default {
+    components: {MuPaper, MuRaisedButton, MuTextField},
     name: 'RegPanel',
     validator: null,
     data() {
@@ -78,7 +70,8 @@
           this.error['nickname'] = cfg.tpl;
           this.Check({ 'nickname': value });
         }, error => {
-          this.error['nickname'] = this.validator.getErrors().errors[0];
+          let errors = this.validator.getErrors().errors;
+          this.error['nickname'] = this.Select(errors, 'nickname');
         })
       },
       account(value) {
@@ -86,21 +79,24 @@
           this.error['account'] = cfg.tpl;
           this.Check({ 'account': value });
         }, error =>{
-          this.error['account'] = this.validator.getErrors().errors[0];
+          let errors = this.validator.getErrors().errors;
+          this.error['account'] = this.Select(errors, 'account');
         });
       },
       password(value) {
         this.validator.validate('password', value).then(result => {
           this.error['password'] = cfg.tpl;
         }, error => {
-          this.error['password'] = this.validator.getErrors().errors[0];
+          let errors = this.validator.getErrors().errors;
+          this.error['password'] = this.Select(errors, 'password');
         })
       },
       passwordConfirmed(value) {
         this.validator.validate('passwordConfirmed', value).then(result => {
           this.error['passwordConfirmed'] = cfg.tpl;
         }, error => {
-          this.error['passwordConfirmed'] = this.validator.getErrors().errors[0];
+          let errors = this.validator.getErrors().errors;
+          this.error['passwordConfirmed'] = this.Select(errors, 'passwordConfirmed');
         })
       }
     },
@@ -148,6 +144,16 @@
         }, error => {
           console.log('please confirm your form data');
         })
+      },
+      Select( errors, fieldName ) {
+        let result;
+        errors.forEach((error) => {
+          if(error.field == fieldName) {
+            result = error;
+            return false;
+          }
+        });
+        return result;
       }
     },
     created() {
@@ -162,13 +168,4 @@
 </script>
 
 <style scoped>
-  .login-panel {
-    width: 30%;
-    padding: 20em 2em;
-    margin: 0 auto;
-    background-color: #ffffff;
-  }
-  .login-panel .login-submit {
-    color: black;
-  }
 </style>

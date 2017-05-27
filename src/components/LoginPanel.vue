@@ -6,7 +6,7 @@
       <mu-text-field label="PASSWORD" class="input" v-model="password" type="password" labelFloat/>
     </div>
     <div id="LoginSubmit" class="login-submit pull-left">
-      <a href="#" class="signup">No Account!Sign Up</a>
+      <a href="/reg" class="signup link">No Account!Sign Up</a>
       <mu-raised-button label="LOGIN" class="button-login" v-on:click="loginIn()" primary/>
     </div>
   </mu-paper>
@@ -55,13 +55,13 @@
   }
 </script>
 
-<style scoped>
+<style>
   .login-panel {
     width: 30%;
     margin: 0em auto;
     position: relative;
     background-color: #ffffff;
-    top: calc(50% - 17em);
+    top: calc(50% - 18em);
     text-indent: 2em;
   }
   .login-panel .login-title {
@@ -72,7 +72,7 @@
     background-color: #1976d2;
   }
   .login-panel .login-info {
-    padding: 0 2em;
+    padding: 2em 2em 0 2em;
     text-indent: 0em;
   }
   .login-panel .login-info .input{
@@ -82,7 +82,7 @@
     padding: 2em;
     color: black;
   }
-  .login-panel .login-submit .signup {
+  .login-panel .login-submit .link {
     color: #ccc;
     text-decoration: underline;
     margin-right: 1em;
