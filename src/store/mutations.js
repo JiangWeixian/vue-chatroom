@@ -52,8 +52,11 @@ function setCurrentThread(state, threadId) {
   if(!state.threads[threadId]) {
     debugger
   }
-  state.threads[threadId].lastMessage.isRead = true;
-  state.threads[threadId].lastClickStamp = Date.now();
+  let currentThread = state.threads[threadId];
+  currentThread.lastMessage.isRead = true;
+  currentThread.lastClickStamp = Date.now();
+  currentThread.count = 0;
+  state.threads[threadId] = currentThread;
 }
 
 function createThread(state, threadId, threadName) {
@@ -63,7 +66,8 @@ function createThread(state, threadId, threadName) {
     avatar: staticFriendAvatarPath + threadName + '.jpg',
     messages: [],
     lastClickStamp: null,
-    lastMessage: null
+    lastMessage: null,
+    count: 0
   })
 }
 
@@ -74,6 +78,7 @@ function addMessage(state, message) {
     thread.messages.push(message.id);
     thread.lastMessage = message;
     thread.lastClickStamp = message.timestamp;
+    thread.count = message.isRead? thread.count: parseInt(thread.count)+1;
   }
   Vue.set(state.messages, message.id, message);
 }

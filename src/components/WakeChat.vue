@@ -12,8 +12,11 @@
   import MuFlatButton from "../../node_modules/muse-ui/src/flatButton/flatButton";
   import MuFloatButton from "../../node_modules/muse-ui/src/floatButton/floatButton";
   /**
-   * WakeButton vue - this button appear on every pages, and contain some small extendtions
+   * WakeChat vue - this button appear on every pages, and contain some small extendtions
    * ---------------
+   * Chat vue - vue -chatroom
+   * ---------------
+   * @created(func) - when wakechat created, post token to server. emit login-socket or push to login.vue
    */
   export default {
     name: 'WakeChat',
@@ -47,9 +50,6 @@
           window.alert('there is no network!')
         }
       })
-    },
-    beforeDestroy() {
-      this.$socket.emit('logout', {user: this.nickname})
     }
   }
 </script>
@@ -57,8 +57,16 @@
 <style scoped>
   .wake-chat {
     position: fixed;
-    right: 2vw;
-    top: 55vh;
+    left: 95%;
+    top: 86%;
     z-index: 999;
+  }
+  .wake-chat .wakebutton {
+    z-index: 999;
+  }
+  .wake-chat .chat {
+    position: relative;
+    right: 670px;
+    top: -530px;
   }
 </style>

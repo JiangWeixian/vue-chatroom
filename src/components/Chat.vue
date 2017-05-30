@@ -1,5 +1,5 @@
 <template>
-  <mu-paper class="chat" v-bind:class="[ display? '':'hide' ]" :zDepth="1" :rounded=false>
+  <mu-paper class="chat" v-bind:class="[ display? '':'hide' ]" :zDepth="2" :rounded=false>
     <chat-siderbar></chat-siderbar>
     <chat-main></chat-main>
   </mu-paper>
@@ -21,12 +21,45 @@
   }
 </script>
 
-<style scoped>
+<style>
   .hide {
     display: none;
   }
+  .chat {
+    width: 700px;
+    height: 500px;
+  }
   .chat-siderbar, .chat-main {
+    margin: 0px;
+    padding: 0px;
     display: inline-block;
+    float: left;
+  }
+  .chat-siderbar {
+    width: 30%;
+    height: 100%;
+  }
+  .chat-main {
+    width: 70%;
+    height: 100%;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
   }
 
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #673ab7;
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #673ab7;
+  }
 </style>

@@ -32,6 +32,11 @@ a{
 ul{
     list-style: none;
 }
+input {
+  background: none;
+  outline: none;
+  border: 0px;
+}
 /*======
     修改placeholder的颜色
     ======*/

@@ -94,11 +94,11 @@ Should contain funcs of datasets.
   * [x] move secret into config
 * [x] login.vue
   * [x] modify postdata
-* [ ] UI
+* [x] UI
   * [ ] background
-  * [ ] input filed
-  * [ ] hello bar
-  * [ ] button
+  * [x] input filed
+  * [x] hello bar
+  * [x] button
   
 **func complete!**
 
@@ -115,6 +115,7 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
   * [x] check info in datasets
   * [x] add newuser-info into datasets
   * [x] add new Router process check nickname and password, Returns in a specific format
+* [x] UI
 
 ### CHAT-ROOM
 Click wake-button, enter chatroom in each pages!**Still in Processing!**
@@ -139,11 +140,13 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
   * [x] send message and receive(me send to me)
   * [x] xmind for message flow
   * [x] store messsages in localStorage
-  * [ ] send message from another side!(in .js file)
+  * [x] send message from another side!(in .js file)
   * [ ] add/delte friend!
 * [ ] server
   * [x] connect to client
   * [x] auth token
+* [ ] UI
+  * [ ] message-thread, title
  
 ### HOME-PAGE
 
@@ -290,5 +293,9 @@ big boom!
 
 * in ./src/server/main.js - **add** logoutsocket process disconnect event!
 * in ./src/server/socket/logout.js - **created** this file
+
+### 2017-5-29
+
+* in Chatroom's vue components, complete UI
 
 

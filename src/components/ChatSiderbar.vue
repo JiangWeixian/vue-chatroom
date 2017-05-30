@@ -18,3 +18,17 @@
     }
   }
 </script>
+
+
+<style>
+  .chat-siderbar {
+    background-color: #673ab7;
+  }
+  .chat-siderbar .infolist {
+    height: 80%;
+  }
+  .chat-siderbar .card {
+    height: 20%;
+  }
+</style>
+

@@ -18,11 +18,12 @@ export const initOfficeData = () => {
   })
 };
 
-export const createMessage = ({ text, thread, authorname }) => {
+export const createMessage = ({ text, thread, authorname, left }) => {
   let messages = JSON.parse(localStorage.getItem('messages'));
   return new Promise(( resolve, reject ) => {
     const timestamp = Date.now();
     const id = 'ms_' + timestamp;
+    const slot = left? 'leftAvatar': 'rightAvatar';
     const message = {
       id: id,
       text: text,
@@ -30,7 +31,8 @@ export const createMessage = ({ text, thread, authorname }) => {
       threadName: thread.name,
       authorName: authorname,
       timestamp: timestamp,
-      avatar: staticFriendAvatarPath + authorname + '.jpg'
+      avatar: staticFriendAvatarPath + authorname + '.jpg',
+      slot: slot
     };
     if(message) {
       messages.push(message);
