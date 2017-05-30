@@ -100,7 +100,7 @@ Should contain funcs of datasets.
   * [x] hello bar
   * [x] button
   
-![**LOGIN-PAGE**](https://github.com/JiangWeixian/vuedetect/tree/v1.1/README/LOGINPAGE.png)
+![**LOGIN-PAGE**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/LOGINPAGE.png)
   
 **func complete!**
 
@@ -119,7 +119,7 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
   * [x] add new Router process check nickname and password, Returns in a specific format
 * [x] UI
 
-![**REG-PAGE**](https://github.com/JiangWeixian/vuedetect/tree/v1.1/README/REGPAGE.png)
+![**REG-PAGE**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/REGPAGE.png)
 
 ### CHAT-ROOM
 Click wake-button, enter chatroom in each pages!**Still in Processing!**
@@ -152,7 +152,7 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
 * [ ] UI
   * [x] message-thread, title
   
-![**CAHATROOM**](https://github.com/JiangWeixian/vuedetect/tree/v1.1/README/CHATROOM.png)
+![**CAHATROOM**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/CHATROOM.png)
  
 ### HOME-PAGE
 
