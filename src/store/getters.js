@@ -1,6 +1,12 @@
-export const logined = state => state.login;
+export const logined = state => {
+  state.login = localStorage.getItem('login');
+  return state.login
+};
 
-export const nickname = state => state.nickname;
+export const nickname = state => {
+  state.nickname = localStorage.getItem('nickname');
+  return state.nickname;
+};
 
 export const currentThread = state => {
   const currentId = state.currentThreadId;

@@ -39,7 +39,7 @@ The jobs of vue showed:
 ├── vue
 ├── vue-hot-reload-api
 ├── vue-loader
-├── vue-material - UI库/Ｍaterial-design
+├── muse-ui - UI库/Ｍaterial-design
 ├── vue-resource - vue向服务器发起请求
 ├── vue-router - 由于Vue属于单页面应用，该插件用于处理页面中不同路由跳转
 ├── vee-validate - Front end verification
@@ -94,6 +94,13 @@ Should contain funcs of datasets.
   * [x] move secret into config
 * [x] login.vue
   * [x] modify postdata
+* [x] UI
+  * [ ] background
+  * [x] input filed
+  * [x] hello bar
+  * [x] button
+  
+![**LOGIN-PAGE**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/LOGINPAGE.png)
   
 **func complete!**
 
@@ -110,6 +117,9 @@ This page similar to LOGININ-PAGE, we need add new actions/mutations(such as:che
   * [x] check info in datasets
   * [x] add newuser-info into datasets
   * [x] add new Router process check nickname and password, Returns in a specific format
+* [x] UI
+
+![**REG-PAGE**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/REGPAGE.png)
 
 ### CHAT-ROOM
 Click wake-button, enter chatroom in each pages!**Still in Processing!**
@@ -118,21 +128,32 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
   * [x] init message from state
   * [x] init threads in list from state
   * [x] add click thread func
-* [ ] api
+* [x] api
   * [x] create message template
-  * [ ] read office message from office.js
+  * [x] read office message from office.js
 * [ ] actions
   * [x] sendMessage
   * [x] switch thread
 * [ ] mutations
   * [x] add message to state
-  * [ ] init office-message come from api
+  * [x] init office-message come from api
   * [x] switch thread to set currentThreadId
+  * [ ] store thread in local
 * [ ] socket
-  * [ ] connect to server by socket
+  * [x] connect to server by socket
+  * [x] send message and receive(me send to me)
+  * [x] xmind for message flow
+  * [x] store messsages in localStorage
+  * [x] send message from another side!(in .js file)
+  * [ ] add/delte friend!
 * [ ] server
-  [ ] connect to client
-
+  * [x] connect to client
+  * [x] auth token
+* [ ] UI
+  * [x] message-thread, title
+  
+![**CAHATROOM**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/CHATROOM.png)
+ 
 ### HOME-PAGE
 
 Should contain brief of this website.
@@ -148,7 +169,7 @@ The update of vuedetect-project:
 
 ### 2017-4-5
 
-* in ./src/router/index.js - **add** beforeach
+* in ./src/router/login.js - **add** beforeach
 * in ./src/store/action.js - **move** fuction LoginIn to loginPanel.vue: **add** stored token in localstorage/vue.router.go(not test)
 * in ./server/router/login.js - when accout&password are found in datasets: response token
 
@@ -211,7 +232,7 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/api - **created** this folder
 * in ./src/assets - **add** avatar.jpg
 * in ./src/store/getters - **add** export const currentThread&CcurrentMessage
-* in ./src/api/index.js - **created** func createMessage
+* in ./src/api/login.js - **created** func createMessage
 * in ./src/store/actions.js - **created** func sendMessage
 * in ./src/store/mutations.js - **created** func SEND_MESSAGE, and func addMessage
 
@@ -227,7 +248,60 @@ vee-validator&vue2.0 work in some places is not very good
 * in ./src/store/actions.js - **add** func switch_thread
 * in ./src/store/mutations.js - **add** func SWITCH_THREAD
 
-### 2017-5-16
+### 2017-5-15
 
 * in ./store/actions.js & ./store/mutation.js - **add** init officedata from ./api/officeDate.js done
 * in ./src/main.js - init office data when **npm run dev** by initMessage
+
+### 2017-5-16
+
+* in ./server/router/auth.js - **created** this file, and **add** simple auth rule
+* in ./src/compoents/WakeBuutton.vue - **add** simple auth by post token to server
+
+### 2017-5-18
+
+* in ./src/store/mutation.js - **changed** store nickname&&login in localStorage
+* in ./src/store/getters.hs - **changed** get state.nickname and state.login from localStorage
+* in ./src/main.js - **add** intervalAuth for auth token each one day!
+
+### 2017-5-19
+
+* in ./src/components/WakeChat.vue & ./src/componets/Chat.vue - **add** props display, the methods Wake() in WakeButton.vue comtrol Chat.vue SHOW or HIDE!
+* in ./src/compoents/WakeButton.vue & in ./server/router/auth.js - **fixed** some bugs when auth token  
+
+### 2017-5-20
+
+Learn use **Socket.io(npm socket.io --version = v3.5.2)**, find:
+
+* io.to - can send message to sender
+* socket.to & socket.broadcast.to - can't send message to sender, maybe only send message to others sockets!
+* in ./src/components/ChatMainMessage.vue - **add** socket `message` for receive message, so simple online chat room is completed!
+
+### 2017-5-21
+
+* in ./src/api/index.js - **changed** initOfficeData() and createMessage(), now we can store messages in localstorage! 
+* in ./src/main.js - **remove** intervalAuth(), because F5 refresh main.js will dispatch this function!
+
+### 2017-5-23
+
+how can i detect client leave our website(in socket)? those below is what i found!:
+
+* close tab -> emit disconnect? - no! user may open link in new tab!
+* refresh/duplicate will create a new Socket connect to server!
+* close tab will auto emit disconnect event!
+* user-socket.id - socket.id should be a array!
+
+big boom!
+
+* add a name(data.user) to each socket, when disconnet, i can know which one disconnect!
+
+### 2017-5-23
+
+* in ./src/server/main.js - **add** logoutsocket process disconnect event!
+* in ./src/server/socket/logout.js - **created** this file
+
+### 2017-5-29
+
+* in Chatroom's vue components, complete UI
+
+

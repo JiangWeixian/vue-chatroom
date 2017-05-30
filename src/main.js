@@ -4,6 +4,8 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VeeValidate from 'vee-validate'
 import VueSocketio from 'vue-socket.io'
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -13,6 +15,7 @@ import { url } from './config/cfg'
 Vue.config.productionTip = false;
 Vue.use(VueResource);
 Vue.use(VeeValidate);
+Vue.use(MuseUI);
 Vue.use(VueSocketio, url);
 
 
@@ -28,5 +31,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 });
-
 initMessage(store);

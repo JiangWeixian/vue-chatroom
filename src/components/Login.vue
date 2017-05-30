@@ -7,7 +7,7 @@
 <script>
   import LoginPanel from "./LoginPanel";
   export default {
-    components: {LoginPanel},
+    components: { LoginPanel },
     name: 'Login',
     data() {
       return {

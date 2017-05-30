@@ -7,7 +7,7 @@ import * as actions from './actions'
 Vue.use(Vuex);
 
 const state = {
-  login: false,
+  login: true,
   nickname: 'Saber',
   currentThreadId: null,
   threadsList: [],

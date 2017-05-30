@@ -15,12 +15,14 @@ var path = require('path');
  * @DATASETS_PATH ./server/datasets
  * @ROUTER_PATH ./server/router
  * @UTIL_PATH ./server/util
+ * @USERSOCKETMAP store (user, socket.id)
  */
 global.ROOT_PATH = __dirname;
 global.CONFIG_PATH = path.join(ROOT_PATH, 'config/');
 global.DATASETS_PATH = path.join(ROOT_PATH, 'datasets/');
 global.ROUTER_PATH = path.join(ROOT_PATH, 'router/');
 global.UTIL_PATH = path.join(ROOT_PATH, 'util/');
+global.USERSOCKETMAP = {};
 
 /**
  * ExRra-Package&Variable
@@ -32,8 +34,11 @@ global.UTIL_PATH = path.join(ROOT_PATH, 'util/');
 var loginRouter = require('./router/login');
 var regRouter = require('./router/reg');
 var checkRouter = require('./router/check');
+var authRouter = require('./router/auth');
 var chatSocket = require('./socket/chat');
-var index = require('./socket/index');
+var loginSocket = require('./socket/login');
+var logoutSocket = require('./socket/logout');
+var chatSocket = require('./socket/chat');
 
 
 /**
@@ -66,14 +71,22 @@ app.use(function(req, res, next) {
 app.use(regRouter);
 app.use(loginRouter);
 app.use(checkRouter);
+app.use(authRouter);
 
 /**
  * Socket.io
  * @ process chat data
  */
 
-io.on('connection', index);
+
+io.on('connection', loginSocket);
 io.on('connection', chatSocket);
+io.on('connection', logoutSocket);
+
+setInterval(function () {
+  console.log('========');
+  console.log(USERSOCKETMAP);
+}, 5000);
 
 /**
  * Testing

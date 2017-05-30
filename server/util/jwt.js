@@ -1,4 +1,5 @@
 var Jwt = require('jwt-simple');
+var Promise = require('bluebird');
 var jwt_config = require(CONFIG_PATH + 'jwt').jwt_config;
 var secret = jwt_config.secret;
 
@@ -10,16 +11,32 @@ var secret = jwt_config.secret;
  * @returns {{token: *, exp: number}}
  */
 
-function encode(iss, exp, aud) {
+function encode(sub, exp, aud) {
   exp = arguments[1]? arguments[1]:60 * 60 * 1000;
-  aud = arguments[2]?arguments[2]:'vuedetect';
+  aud = arguments[2]? arguments[2]:'vuedetect';
   exp = Date.now() + exp;
   var token = Jwt.encode({
-    iss: iss,
-    exp: exp,
+    iss: aud,
+    exp: Date.now() + exp,
+    sub: sub,
     aud: aud
   }, secret);
   return {token: token, exp: exp};
 }
 
+function decode(token) {
+  return new Promise(function (resolve, reject) {
+    try {
+      var decodetoken = Jwt.decode(token, secret);
+    }
+    catch(e) {
+      reject('token is invaild')
+    }
+    resolve(decodetoken)
+  });
+  // return Jwt.decode(token, secret);
+}
+
+
 exports.encode = encode;
+exports.decode = decode;

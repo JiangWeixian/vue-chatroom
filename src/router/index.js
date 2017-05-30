@@ -20,7 +20,7 @@ const routes = [
   {path:'/', component:Hello, name:'hello'},
   {path:'/login', component:Login, name:'login'},
   {path: '/reg', component:Reg, name:'reg'},
-  {path: '/push', component:push, name:'push'}
+  {path: '/push/:id', component:push, name:'push'}
 ];
 
 const router = new Router({
@@ -28,15 +28,17 @@ const router = new Router({
   routes
 });
 
+
+
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
-  if(to.path == '/login') {
+  if(to.path == '/') {
     if(token != 'null' && token != null) {
       console.log("get token");
       next('/push');
     }
     else {
-      next('/login');
+      next();
     }
   }
   else {
@@ -44,5 +46,7 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
+
 
 export default router;

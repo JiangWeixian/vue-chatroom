@@ -3,14 +3,19 @@ import { staticFriendAvatarPath } from '../config/cfg'
 
 
 export const LOGIN_IN = (state, { nickname }) => {
-  state.login = true;
-  state.nickname = nickname;
+  localStorage.setItem('nickname', nickname);
+  localStorage.setItem('login', true);
+  state.login = localStorage.getItem('login');
+  state.nickname = localStorage.getItem('nickname');
   window.alert("login successfully");
 };
 
 export const LOGIN_OUT = state => {
-  state.login = false;
-  state.nickname = '';
+  localStorage.setItem('nickname', '');
+  localStorage.setItem('login', false);
+  state.login = localStorage.getItem('login');
+  state.nickname = localStorage.getItem('nickname');
+  localStorage.setItem('token', null);
   window.alert("login out")
 };
 
@@ -19,7 +24,7 @@ export const INIT_OFFICEDATA = ( state, { messages } ) => {
   state.threadsList = [];
   messages.forEach(message => {
     if(!state.threads[message.threadId]) {
-      createThread(state, message.threadId, message.threadName)
+      createThread(state, message.threadId, message.threadName);
       initThreadsList(state, message.threadId)
     }
     if(!lastestMessage || message.timestamp > lastestMessage.timestamp) {
@@ -27,7 +32,7 @@ export const INIT_OFFICEDATA = ( state, { messages } ) => {
     }
     addMessage(state, message)
   });
-  setCurrentThread(state, lastestMessage.threadId)
+  setCurrentThread(state, lastestMessage.threadId);
 };
 
 export const SEND_MESSAGE = ( state, { message } ) => {
@@ -47,7 +52,11 @@ function setCurrentThread(state, threadId) {
   if(!state.threads[threadId]) {
     debugger
   }
-  state.threads[threadId].lastMessage.isRead = true;
+  let currentThread = state.threads[threadId];
+  currentThread.lastMessage.isRead = true;
+  currentThread.lastClickStamp = Date.now();
+  currentThread.count = 0;
+  state.threads[threadId] = currentThread;
 }
 
 function createThread(state, threadId, threadName) {
@@ -57,7 +66,8 @@ function createThread(state, threadId, threadName) {
     avatar: staticFriendAvatarPath + threadName + '.jpg',
     messages: [],
     lastClickStamp: null,
-    lastMessage: null
+    lastMessage: null,
+    count: 0
   })
 }
 
@@ -68,6 +78,7 @@ function addMessage(state, message) {
     thread.messages.push(message.id);
     thread.lastMessage = message;
     thread.lastClickStamp = message.timestamp;
+    thread.count = message.isRead? thread.count: parseInt(thread.count)+1;
   }
   Vue.set(state.messages, message.id, message);
 }

@@ -1,12 +1,15 @@
 <template>
-  <div class="chat-main-text">
-    <textarea v-on:keyup.enter="sendMessage"></textarea>
+  <div class="chat-main-text" v-on:keyup.enter="sendMessage()">
+    <mu-text-field multiLine fullWidth :rows="3" :rowsMax="3" v-model="msg"></mu-text-field>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import MuTextField from "../../node_modules/muse-ui/src/textField/textField";
+  import MuIcon from "../../node_modules/muse-ui/src/icon/icon";
   export default {
+    components: {MuIcon, MuTextField},
     name: 'ChatMainText',
     data() {
       return {
@@ -20,19 +23,26 @@
       })
     },
     methods: {
-      sendMessage(e) {
-        const event = e || window.event;
-        const text = event.target.value;
+      sendMessage() {
+        let text = this.msg;
         if (text.trim()) {
           this.$store.dispatch('sendMessage', {
             text: text,
             thread: this.currentThread,
-            authorname: this.nickname
+            authorname: this.nickname,
+            left: true
           });
-          this.$socket.emit('login', {login: 'successfully'})
+          this.$socket.emit('message', {
+            text: text,
+            //to: this.currentThread.id,
+            to: this.nickname,
+            author: this.nickname
+          })
         }
-        event.target.value = '';
+        this.msg = '';
       }
     }
   }
 </script>
+
+
