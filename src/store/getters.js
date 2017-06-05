@@ -28,5 +28,23 @@ export const threads = state => {
     : [];
 };
 
+export const currentAppThread = state => {
+  return state.currentAppThread;
+};
+
+export const currentAppThreadInfo = state => {
+  const appThread = currentAppThread(state);
+  return appThread.info
+    ? appThread.info
+    : {};
+};
+
+export const currentAppMessage = state => {
+  const appThread = currentAppThread(state);
+  return appThread.messages
+    ? appThread.messages.map(id => state.appMessages[id])
+    : [];
+};
+
 
 export const test = state => state.test;

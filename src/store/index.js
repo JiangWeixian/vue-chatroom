@@ -12,7 +12,9 @@ const state = {
   currentThreadId: null,
   threadsList: [],
   threads: {},
-  messages: {}
+  messages: {},
+  currentAppThread: {},
+  appTempList: []
   // currentThreadId: 'th1',
   // threadsList: ['th1', 'th2'],
   // threads: {

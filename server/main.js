@@ -22,6 +22,9 @@ global.CONFIG_PATH = path.join(ROOT_PATH, 'config/');
 global.DATASETS_PATH = path.join(ROOT_PATH, 'datasets/');
 global.ROUTER_PATH = path.join(ROOT_PATH, 'router/');
 global.UTIL_PATH = path.join(ROOT_PATH, 'util/');
+global.STATIC_PATH = path.join(ROOT_PATH, 'static/');
+global.IMG_PATH = path.join(ROOT_PATH, 'static/img/');
+global.IMG_APP_PATH = path.join(ROOT_PATH, 'static/img/application');
 global.USERSOCKETMAP = {};
 
 /**
@@ -35,6 +38,8 @@ var loginRouter = require('./router/login');
 var regRouter = require('./router/reg');
 var checkRouter = require('./router/check');
 var authRouter = require('./router/auth');
+var imgRouter = require('./router/image');
+var AppRouter = require('./router/application');
 var chatSocket = require('./socket/chat');
 var loginSocket = require('./socket/login');
 var logoutSocket = require('./socket/logout');
@@ -72,6 +77,8 @@ app.use(regRouter);
 app.use(loginRouter);
 app.use(checkRouter);
 app.use(authRouter);
+app.use(imgRouter);
+app.use(AppRouter);
 
 /**
  * Socket.io

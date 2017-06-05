@@ -43,6 +43,26 @@ export const SWITCH_THREAD = ( state, { threadId } ) => {
   setCurrentThread(state, threadId);
 };
 
+export const SET_APP = ( state, { appHeader, appInfo } ) =>{
+  state.appTempList = [];
+  if(!state.currentAppThread[appHeader.name]) {
+    createAppThreads(state, appHeader, appInfo);
+    state.appTempList.push(appHeader.name);
+  }
+};
+
+// APP-FUNCS
+function createAppThreads(state, appHeader, appInfo) {
+  const currentAppThread = {
+    name: appHeader.name,
+    avatar: appHeader.avatar,
+    info: appInfo,
+    messages: []
+  };
+  state.currentAppThread = currentAppThread;
+}
+
+// CHATROOM-FUNCS
 function initThreadsList(state, threadId) {
   state.threadsList.push(threadId);
 }
