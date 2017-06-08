@@ -14,6 +14,7 @@ const state = {
   threads: {},
   messages: {},
   currentAppThread: {},
+  tempAppPosters: {},
   appTempList: []
   // currentThreadId: 'th1',
   // threadsList: ['th1', 'th2'],

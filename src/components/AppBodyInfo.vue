@@ -2,9 +2,9 @@
   <div>
     <mu-paper>
       <ul class="info-header">
-        <li><span class="prefix">creater:</span><mu-flat-button :label="info.creater"/></li>
-        <li><span class="prefix">follow:</span><mu-flat-button :label="info.follow"/></li>
-        <li><span class="prefix">post:</span><mu-flat-button :label="info.post"/></li>
+        <li><span class="prefix">creater:</span><mu-flat-button :label="''+info.creater"/></li>
+        <li><span class="prefix">follow:</span><mu-flat-button :label="''+info.follow"/></li>
+        <li><span class="prefix">post:</span><mu-flat-button :label="''+info.post"/></li>
       </ul>
       <mu-divider/>
       <div class="info-body">
@@ -39,13 +39,17 @@
 </script>
 
 <style scoped>
+  .info-header {
+    font-size: 0px;
+  }
   .info-header li {
     display: inline-block;
     width: 33%;
     text-align: center;
   }
-  .info-header li .prefix {
+  .info-header li span.prefix {
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 1.5rem;
   }
 </style>

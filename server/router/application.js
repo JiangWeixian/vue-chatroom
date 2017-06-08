@@ -29,6 +29,36 @@ var temp = {
       sketch: 'movie big boom!'
     }
   },
+  home: [
+    {
+      name: 'wonder_woman1',
+      img: url + '?type=movie&filename=wonder_women.jpg',
+      imdb: 'www.imdb.com',
+      time: Date.now(),
+      like: 9700
+    },
+    {
+      name: 'wonder_woman2',
+      img: url + '?type=movie&filename=wonder_women.jpg',
+      imdb: 'www.imdb.com',
+      time: Date.now(),
+      like: 9700
+    },
+    {
+      name: 'wonder_woman3',
+      img: url + '?type=movie&filename=wonder_women.jpg',
+      imdb: 'www.imdb.com',
+      time: Date.now(),
+      like: 9700
+    },
+    {
+      name: 'wonder_woman4',
+      img: url + '?type=movie&filename=wonder_women.jpg',
+      imdb: 'www.imdb.com',
+      time: Date.now(),
+      like: 9700
+    }
+  ]
 };
 
 router.param('type', function (req, res, next, type) {

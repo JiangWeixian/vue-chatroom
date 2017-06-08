@@ -50,8 +50,9 @@ export const switchThread = ({ commit }, { threadId }) => {
 
 export const setAppSketch = ({ commit }, payload) =>{
   const appHeader = payload.header
-    , appInfo = payload.info;
-  commit(types.SET_APP, { appHeader, appInfo })
+    , appInfo = payload.info
+    , appHome = payload.home;
+  commit(types.SET_APP, { appHeader, appInfo, appHome })
 };
 
 export const intervalAuth = ({ commit }) => {
