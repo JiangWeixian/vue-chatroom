@@ -43,6 +43,32 @@ export const SWITCH_THREAD = ( state, { threadId } ) => {
   setCurrentThread(state, threadId);
 };
 
+export const SET_APP = ( state, { appHeader, appInfo, appHome } ) =>{
+  createAppThreads(state, appHeader, appInfo);
+  state.appTempList.push(appHeader.name);
+  console.log('ok');
+  appHome.forEach(poster => {
+    addTempAppPosters(state, poster);
+    state.currentAppThread.posters.push(poster.name);
+  });
+};
+
+// APP-FUNCS
+function createAppThreads(state, appHeader, appInfo) {
+  const currentAppThread = {
+    name: appHeader.name,
+    avatar: appHeader.avatar,
+    info: appInfo,
+    posters: []
+  };
+  state.currentAppThread = currentAppThread;
+}
+
+function addTempAppPosters(state, poster) {
+  Vue.set(state.tempAppPosters, poster.name, poster);
+}
+
+// CHATROOM-FUNCS
 function initThreadsList(state, threadId) {
   state.threadsList.push(threadId);
 }

@@ -28,5 +28,24 @@ export const threads = state => {
     : [];
 };
 
+// application-getters
+export const currentAppThread = state => {
+  return state.currentAppThread;
+};
+
+export const currentAppThreadInfo = state => {
+  const appThread = currentAppThread(state);
+  return appThread.info
+    ? appThread.info
+    : {};
+};
+
+export const currentAppThreadPosters = state => {
+  const appThread = currentAppThread(state);
+  return appThread.posters
+    ? appThread.posters.map(id => state.tempAppPosters[id])
+    : [];
+};
+
 
 export const test = state => state.test;

@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login'
 import Reg from '@/components/Reg'
+import Application from '@/components/Application'
+import AppBodyInfo from '@/components/AppBodyInfo'
+import AppBodyHome from '@/components/AppBodyHome'
 import push from '@/components/push'
 
 Vue.use(Router);
@@ -20,7 +23,13 @@ const routes = [
   {path:'/', component:Hello, name:'hello'},
   {path:'/login', component:Login, name:'login'},
   {path: '/reg', component:Reg, name:'reg'},
-  {path: '/push/:id', component:push, name:'push'}
+  {path: '/push/:id', component:push, name:'push'},
+  {path: '/application/:id', component: Application, name: 'application',
+    children: [
+      { path: 'info', component: AppBodyInfo },
+      { path: 'home', component: AppBodyHome }
+    ]
+  }
 ];
 
 const router = new Router({

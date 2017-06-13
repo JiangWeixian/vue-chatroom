@@ -17,6 +17,9 @@ import Vue from 'vue'
  * -------------------------------------------------------
  * func switchThread: change current ThreadId in state
  * @param threadId: the id of thread come from ChatSiderbarList.vue
+ * -------------------------------------------------------
+ * func setAppSketch: fetch application info from server, commit mutation to set state
+ * @param payload: data from server
  */
 
 export const loginIn = ({ commit }, { nickname }) => {
@@ -43,6 +46,13 @@ export const sendMessage = ({ commit }, payload) => {
 
 export const switchThread = ({ commit }, { threadId }) => {
   commit(types.SWITCH_THREAD, { threadId });
+};
+
+export const setAppSketch = ({ commit }, payload) =>{
+  const appHeader = payload.header
+    , appInfo = payload.info
+    , appHome = payload.home;
+  commit(types.SET_APP, { appHeader, appInfo, appHome })
 };
 
 export const intervalAuth = ({ commit }) => {

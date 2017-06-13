@@ -152,7 +152,7 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
 * [ ] UI
   * [x] message-thread, title
   
-![**CAHATROOM**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/CHATROOM.png)
+![**CAHATROOM**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/chatroom.gif)
  
 ### HOME-PAGE
 
@@ -304,4 +304,16 @@ big boom!
 
 * in Chatroom's vue components, complete UI
 
+### 2017-6-2
 
+* in ./src/components - **created** some application vue files.
+* in ./src/store/action.js & mutation.js & getters.js - **created** funcs init state.appThreads and get those state.
+
+### 2017-6-5
+
+* in ./src/components's App - **add** UI parts to these vue files
+
+### 2017-6-12
+
+* in ./src/components/ChatSiderbarCard.vue - **remove** filter search into ChatSiderbarList.vue
+* in ./src/components/vues - **fixed** style bugs.
