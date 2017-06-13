@@ -1,9 +1,14 @@
 <template>
   <div>
     <ul>
-      <li>
-        <p>{{ posters }}</p>
-        <img/>
+      <li v-for="poster in posters" class="body-item">
+        <p>{{ poster.name }}</p>
+        <img :src="poster.img"/>
+        <p>
+          <span>{{ poster.imdb }}</span>
+          <span>{{ poster.time | time }}</span>
+          <span>{{ poster.like }}</span>
+        </p>
       </li>
     </ul>
     <div></div>
@@ -34,3 +39,9 @@
     }
   }
 </script>
+
+<style scoped>
+  li.body-item, img {
+    width: 100%;
+  }
+</style>

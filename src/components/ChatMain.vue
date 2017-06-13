@@ -36,6 +36,7 @@
   }
   .chat-main-text .mu-text-field-input {
     padding: 0.7em;
+    padding-bottom: 0.75em;
     overflow-y: hidden;
   }
 </style>

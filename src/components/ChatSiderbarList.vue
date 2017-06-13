@@ -1,5 +1,10 @@
 <template>
   <div class="infolist">
+    <div class="card-footer">
+      <input type="search" v-on:focus="hideActive" v-on:keyup.enter="enterActive" v-on:blur="showActive"v-model="searchContent">
+      <mu-icon value="search" color="#ccc" size=18 class="card-search" v-bind:class="[ activeNameClass? 'hide':'' ]"/>
+    </div>
+    <mu-divider/>
     <mu-list>
       <mu-list-item v-for="thread in sortedThreads" :key="thread.id" :title="thread.name" v-on:click="switchThread(thread.id)" class="thread">
         <mu-badge :content="clearCount(thread.count)" slot="after" secondary/>
@@ -16,12 +21,17 @@
   import MuListItem from "../../node_modules/muse-ui/src/list/listItem";
   import MuAvatar from "../../node_modules/muse-ui/src/avatar/avatar";
   import MuBadge from "../../node_modules/muse-ui/src/badge/badge";
+  import MuDivider from "../../node_modules/muse-ui/src/divider/divider";
   export default {
-    components: {MuBadge, MuAvatar, MuListItem, MuList},
+    components: {
+      MuDivider,
+      MuBadge, MuAvatar, MuListItem, MuList},
     name: 'ChatSiderbarList',
     data() {
       return {
-        msg: ''
+        msg: '',
+        activeNameClass: false,
+        searchContent: ''
       }
     },
     computed: {
@@ -30,10 +40,12 @@
         currentThread: 'currentThread'
       }),
       sortedThreads() {
-        return this.threads
+        let threads = this.threads
           .slice()
           .sort((a, b) => {
-            return b.lastClickStamp - a.lastClickStamp})
+            return b.lastClickStamp - a.lastClickStamp});
+        threads = threads.filter(thread => thread.name.includes(this.searchContent));
+        return threads;
       }
     },
     methods: {
@@ -45,22 +57,49 @@
           return '';
         }
         else {
-          return count;
+          return '' + count;
         }
+      },
+      hideActive() {
+        this.activeNameClass = true;
+      },
+      showActive() {
+        this.activeNameClass = false;
+      },
+      enterActive() {
+        this.activeNameClass = True;
+        this.searchContent = '';
       }
     }
   }
 </script>
 
 <style>
-  .infolist {
-    padding-top: 1em;
-  }
   .mu-item {
     color: white;
   }
   .mu-item .mu-item-text {
     color: #ccc;
+  }
+  .card-footer {
+    padding-bottom: 1em;
+    position: relative;
+  }
+  .card-footer input {
+    background-color: #fff;
+    text-align: center;
+    height: 2em;
+    margin: 0px auto;
+    display: block;
+    border-radius: 1em;
+  }
+  .card-footer .card-search {
+    position: absolute;
+    right: 36px;
+    bottom: 1.1em;
+  }
+  .card-footer .card-search.hide {
+    display: none;
   }
 </style>
 
