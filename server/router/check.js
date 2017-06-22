@@ -15,19 +15,20 @@ router.post('/check', function (req, res) {
   var condition = req.body;
   var conditionKey = Object.keys(condition)[0];
   var tpl = checkTpl;
-  console.log(conditionKey);
   mongodb.User.findOne(condition, function (err, docs) {
     if(err) {
       res.status(401).send("mongodb error");
     }
     else {
       var user = docs;
+      console.log('user"' + user);
       tpl['field'] = conditionKey;
       if(user) {
-        tpl['msg'] = conditionKey + 'already exit!';
+        tpl['msg'] = conditionKey + ' already exit!';
         res.status(301).json(tpl);
       }
       else {
+        tpl['msg'] = '';
         res.status(200).send(tpl);
       }
     }

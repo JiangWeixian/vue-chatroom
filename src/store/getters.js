@@ -28,7 +28,7 @@ export const threads = state => {
     : [];
 };
 
-// application-getters
+// temp-application-getters
 export const currentAppThread = state => {
   return state.currentAppThread;
 };
@@ -46,6 +46,16 @@ export const currentAppThreadPosters = state => {
     ? appThread.posters.map(id => state.tempAppPosters[id])
     : [];
 };
+
+//follw-application-getters
+export const followAppList = state => {
+  const apps = JSON.parse(localStorage.getItem('followAppList'));
+  state.followAppList = apps
+    ? apps
+    : [];
+  return state.followAppList;
+};
+
 
 
 export const test = state => state.test;

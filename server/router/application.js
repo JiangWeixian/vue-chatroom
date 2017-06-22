@@ -69,6 +69,7 @@ router.param('type', function (req, res, next, type) {
 router.get('/application/:type', function (req, res, next) {
   console.log('movie');
   console.log(req.params);
+  console.log(req);
   res.status(200).send(temp);
   next()
 });
