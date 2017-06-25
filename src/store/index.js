@@ -8,15 +8,20 @@ Vue.use(Vuex);
 
 const state = {
   login: true,
+  //PERSONAL INFO
   nickname: 'Saber',
+  followAppList: [],
+  ownerAppList: [],
+  //CHAT
   currentThreadId: null,
   threadsList: [],
   threads: {},
   messages: {},
+  //BROWE APP
   currentAppThread: {},
   tempAppPosters: {},
   appTempList: [],
-  followAppList: [],
+
   // currentThreadId: 'th1',
   // threadsList: ['th1', 'th2'],
   // threads: {

@@ -43,17 +43,6 @@ export const SWITCH_THREAD = ( state, { threadId } ) => {
   setCurrentThread(state, threadId);
 };
 
-//APP-FUNCS
-
-export const SET_APP = ( state, { appHeader, appInfo, appHome } ) =>{
-  createAppThreads(state, appHeader, appInfo);
-  state.appTempList.push(appHeader.name);
-  appHome.forEach(poster => {
-    addTempAppPosters(state, poster);
-    state.currentAppThread.posters.push(poster.name);
-  });
-};
-
 //FOLLOW-APP-FUNCS
 export const FOLLOW_APP = (state, name) => {
   let apps = state.followAppList;
@@ -71,6 +60,17 @@ export const FOLLOW_APP = (state, name) => {
   localStorage.setItem('followAppList', JSON.stringify(state.followAppList));
 };
 
+
+
+//APP-FUNCS
+export const SET_APP = ( state, { appHeader, appInfo, appHome } ) =>{
+  createAppThreads(state, appHeader, appInfo);
+  state.appTempList.push(appHeader.name);
+  appHome.forEach(poster => {
+    addTempAppPosters(state, poster);
+    state.currentAppThread.posters.push(poster.name);
+  });
+};
 
 // APP-FUNCS
 function createAppThreads(state, appHeader, appInfo) {

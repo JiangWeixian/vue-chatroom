@@ -67,6 +67,35 @@ Use [Mongoose](http://www.nodeclass.com/api/mongoose.html) to manager Mongodb, a
 stored in [Mlab Driver](www.mlab.com)
 
 
+## User-Schema
+
+What kind of data should be fetched when user login!
+
+* follow apps
+* owner apps(created by themself), and followers
+
+### UserDataSets Design
+
+What the UserDataSets should contain?
+
+* nickname
+* password
+* account
+* followapps
+* ownerapps
+
+## APPS-Schema
+
+Return apps' data when user login or request a get by apps' list?
+
+### APPSDataSets Design
+
+What the APPSDataSets should contain?
+
+* headers(avatar/name)
+* info(creater, type, follow, post, body)
+* home
+
 ## Pages
 
 First Commit
@@ -154,7 +183,7 @@ Click wake-button, enter chatroom in each pages!**Still in Processing!**
   
 ![**CAHATROOM**](https://github.com/JiangWeixian/vuedetect/blob/v1.1/README/chatroom.gif)  
 
-### APPLICATION-PAGE
+### APPLICATION-PAGE(under thinking)
 
 show some info of all the apps: 
 

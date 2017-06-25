@@ -2,7 +2,7 @@
   <div class="user-header">
     <div class="header-info">
       <img src="" alt="" class="info-avatar">
-      <p class="info-name"></p>
+      <p class="info-name">{{ nickname }}</p>
       <p class="info-followers"></p>
     </div>
     <div class="header-buttons">
@@ -13,12 +13,18 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default {
     name: 'UserCommonHeader',
     data() {
       return {
         msg: ''
       }
+    },
+    computed: {
+      ...mapGetters({
+        nickname: 'nickname'
+      })
     }
   }
 </script>
