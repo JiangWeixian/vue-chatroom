@@ -5,7 +5,7 @@
       <p class="header-name">{{ currentAppThread.name }}</p>
     </div>
     <div class="header-button">
-      <mu-raised-button label="Follow" icon="add" class="button" primary/>
+      <mu-raised-button v-on:click="follow(currentAppThread.name)" :label=label :icon=icon class="button" primary/>
       <mu-raised-button label="Message" icon="email" class="button" default/>
     </div>
   </div>
@@ -26,8 +26,28 @@
     },
     computed: {
       ...mapGetters({
-        currentAppThread: 'currentAppThread'
-      })
+        currentAppThread: 'currentAppThread',
+        followAppList: 'followAppList'
+      }),
+      label() {
+        let followed = this.followAppList
+          ? this.followAppList.includes(this.currentAppThread.name)
+          : false;
+        return followed
+          ? 'UnFollow'
+          : 'Follow';
+      },
+      icon() {
+        let followed = this.followAppList
+          ? this.followAppList.includes(this.currentAppThread.name)
+          : false;
+        return followed? 'remove':'add'
+      }
+    },
+    methods: {
+      follow(appName) {
+        this.$store.dispatch('follow', this.currentAppThread.name)
+      }
     }
   }
 </script>

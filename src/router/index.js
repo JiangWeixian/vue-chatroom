@@ -6,6 +6,7 @@ import Reg from '@/components/Reg'
 import Application from '@/components/Application'
 import AppBodyInfo from '@/components/AppBodyInfo'
 import AppBodyHome from '@/components/AppBodyHome'
+import UserInfo from '@/components/UserInfo'
 import push from '@/components/push'
 
 Vue.use(Router);
@@ -29,7 +30,8 @@ const routes = [
       { path: 'info', component: AppBodyInfo },
       { path: 'home', component: AppBodyHome }
     ]
-  }
+  },
+  {path: '/user/:id/info', component: UserInfo, name: 'userinfo'}
 ];
 
 const router = new Router({

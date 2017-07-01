@@ -68,4 +68,9 @@ export const intervalAuth = ({ commit }) => {
   }
 };
 
+//follow-application-actions
+export const follow = ({ commit }, payload) => {
+  commit(types.FOLLOW_APP, payload)
+};
+
 
